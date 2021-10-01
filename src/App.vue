@@ -1,22 +1,23 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
+      <app-navigation></app-navigation>
       <router-view />
     </div>
   </div>
 </template>
 
 <script>
+import AppNavigation from "./components/AppNavigation.vue";
 export default {
   name: "app",
-  components: {},
   data() {
     return {};
   },
   created() {},
   mounted() {},
   methods: {},
-  watch: {},
+  components: { AppNavigation },
 };
 </script>
 
