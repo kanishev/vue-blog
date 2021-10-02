@@ -1,18 +1,20 @@
 <template>
   <header>
-    <nav class="container">
-      <div class="branding">
-        <router-link class="header" to="/home">Блог</router-link>
-      </div>
-      <div class="navbar">
-        <ul v-show="!mobile">
-          <router-link class="link" to="#">Домашяя</router-link>
-          <router-link class="link" to="#">Блог</router-link>
-          <router-link class="link" to="#">Создать блог</router-link>
-          <router-link class="link" to="#">Войти</router-link>
-        </ul>
-      </div>
-    </nav>
+    <div class="container">
+      <nav class="navbar">
+        <div class="brand">
+          <router-link class="header" to="/home">Блог</router-link>
+        </div>
+        <div class="navbar-list">
+          <ul v-show="!mobile">
+            <router-link class="link" to="#">Домашяя</router-link>
+            <router-link class="link" to="#">Блог</router-link>
+            <router-link class="link" to="#">Создать блог</router-link>
+            <router-link class="link" to="#">Войти</router-link>
+          </ul>
+        </div>
+      </nav>
+    </div>
     <menu-button
       class="menu-btn"
       @click="toggleMobileNavbar"
@@ -74,8 +76,7 @@ export default {
 header {
   background-color: #fff;
   padding: 0 25px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.08);
   z-index: 2;
 
   .link {
@@ -84,7 +85,7 @@ header {
     transition: 0.3s color ease;
 
     &:hover {
-      color: #1eb8b8;
+      color: #7b68ee;
     }
   }
 
@@ -92,7 +93,7 @@ header {
     display: flex;
     padding: 25px 0;
 
-    .branding {
+    .brand {
       display: flex;
       align-items: center;
 
@@ -104,7 +105,7 @@ header {
       }
     }
 
-    .navbar {
+    .navbar-list {
       position: relative;
       display: flex;
       flex: 1;
