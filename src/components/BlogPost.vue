@@ -2,14 +2,12 @@
   <div class="blog-wrapper no-user">
     <div class="blog-content">
       <div>
-        <h2 v-if="post.welcomeScreen">{{ post.title }}</h2>
-        <h2 v-else>{{ post.title }}</h2>
-        <p v-if="post.welcomeScreen">{{ post.sectionPost }}</p>
-        <p class="content-preview" v-else>{{ post.blogHTML }}</p>
-        <router-link class="link link-light" v-if="post.welcomeScreen" to="#">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.blogHTML }}</p>
+        <router-link v-if="post.main" class="link link-light" to="#">
           Login/Register <Arrow class="arrow arrow-light" />
         </router-link>
-        <router-link class="link" v-else to="#">
+        <router-link v-else class="link" to="#">
           View The Post<Arrow class="arrow" />
         </router-link>
       </div>

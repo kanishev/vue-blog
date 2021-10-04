@@ -6,20 +6,34 @@
       :key="idx"
       :post="post"
     ></blog-post>
+    <div class="blog-card-wrap">
+      <div class="container">
+        <h3>View more Recent Blog</h3>
+        <div class="blog-cards">
+          <blog-card
+            v-for="(post, idx) in sampleBlogCards"
+            :key="idx"
+            :post="post"
+          ></blog-card>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import BlogPost from "../components/BlogPost.vue";
+import BlogCard from "../components/BlogCard.vue";
+
 export default {
   name: "Home",
   data() {
     return {
       welcomeScreen: {
-        title: "Welcome",
-        sectionPost: "Some text",
-        welcomeScreen: true,
-        photo: "coding",
+        title: "Welcome !",
+        blogHTML: "Some text",
+        blogCoverPhoto: "coding",
+        main: true,
       },
       sampleBlogPost: [
         {
@@ -35,6 +49,21 @@ export default {
       ],
     };
   },
-  components: { BlogPost },
+  computed: {
+    sampleBlogCards() {
+      return this.$store.state.sampleBlogCards;
+    },
+  },
+  components: { BlogPost, BlogCard },
 };
 </script>
+
+<style lang="scss" scoped>
+.blog-card-wrap {
+  h3 {
+    font-weight: 300;
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+}
+</style>

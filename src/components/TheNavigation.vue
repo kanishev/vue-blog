@@ -3,14 +3,14 @@
     <div class="container">
       <nav class="navbar">
         <div class="brand">
-          <router-link class="header" to="/home">Блог</router-link>
+          <router-link class="header" to="/">Блог</router-link>
         </div>
         <div class="navbar-list">
           <ul v-show="!mobile">
-            <router-link class="link" to="#">Домашяя</router-link>
-            <router-link class="link" to="#">Блог</router-link>
+            <router-link class="link" to="/">Домашяя</router-link>
+            <router-link class="link" to="/blogs">Блог</router-link>
             <router-link class="link" to="#">Создать блог</router-link>
-            <router-link class="link" to="#">Войти</router-link>
+            <router-link class="link" to="/login">Войти</router-link>
           </ul>
         </div>
       </nav>
