@@ -23,6 +23,11 @@ import email from "../assets/Icons/envelope-regular.svg";
 
 export default {
   name: "reset",
+  data() {
+    return {
+      email: null,
+    };
+  },
   components: { email },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="form-wrap">
     <form action="" class="register">
-      <p class="login-register">
+      <p class="auth-text">
         Already have an account?
         <router-link class="router-link" to="/login">Log In</router-link>
       </p>

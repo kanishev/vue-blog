@@ -1,7 +1,7 @@
 <template>
   <div class="form-wrap">
     <form action="" class="login">
-      <p class="login-register">
+      <p class="auth-text">
         Don't have an account?
         <router-link class="router-link" to="/register">Register</router-link>
       </p>
@@ -55,7 +55,7 @@ export default {
   }
 }
 
-.login-register {
+.auth-text {
   margin-bottom: 32px;
 
   .router-link {
