@@ -1,43 +1,33 @@
 <template>
   <div class="form-wrap">
-    <form action="" class="login">
-      <p class="auth-text">
-        Don't have an account?
-        <router-link class="router-link" to="/register">Register</router-link>
-      </p>
-      <h2>Login to Blog</h2>
-      <div class="inputs">
-        <div class="input">
-          <input type="text" placeholder="Email" v-model="email" />
-          <email class="icon" />
-        </div>
-        <div class="input">
-          <input type="password" placeholder="Password" v-model="password" />
-          <password class="icon" />
-        </div>
-      </div>
-      <router-link class="reset" to="/reset">Forgot password?</router-link>
-      <button>Sign In</button>
-      <div class="angle"></div>
-    </form>
-
+    <component :is="authPage" @togglePage="a"></component>
     <div class="background"></div>
   </div>
 </template>
 
 <script>
-import email from "../assets/Icons/envelope-regular.svg";
-import password from "../assets/Icons/lock-alt-solid.svg";
+import Login from "../components/Auth/Login.vue";
+import Register from "../components/Auth/Register.vue";
+import Reset from "../components/Auth/Reset.vue";
 
 export default {
-  name: "Login",
+  name: "AuthPage",
   data() {
     return {
-      email: null,
-      password: null,
+      page: "Login",
     };
   },
-  components: { email, password },
+  methods: {
+    a(page) {
+      this.page = page;
+    },
+  },
+  computed: {
+    authPage() {
+      return this.page;
+    },
+  },
+  components: { Register, Reset, Login },
 };
 </script>
 

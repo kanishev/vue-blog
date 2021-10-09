@@ -10,7 +10,7 @@
             <router-link class="link" to="/">Домашяя</router-link>
             <router-link class="link" to="/blogs">Блог</router-link>
             <router-link class="link" to="#">Создать блог</router-link>
-            <router-link class="link" to="/login">Войти</router-link>
+            <router-link class="link" to="/auth">Войти</router-link>
           </ul>
         </div>
       </nav>

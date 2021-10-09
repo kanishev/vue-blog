@@ -2,9 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Blogs from "../views/Blogs.vue";
-import Register from "../views/Register.vue";
-import Reset from "../views/Reset.vue";
-import Login from "../views/Login.vue";
+import Auth from "../views/Auth.vue";
 
 Vue.use(VueRouter);
 
@@ -28,29 +26,11 @@ const routes = [
     },
   },
   {
-    path: "/login",
-    name: "Login",
-    component: Login,
+    path: "/auth",
+    name: "Auth",
+    component: Auth,
     meta: {
-      title: "Login Page",
-      layout: "empty",
-    },
-  },
-  {
-    path: "/register",
-    name: "Register",
-    component: Register,
-    meta: {
-      title: "Register Page",
-      layout: "empty",
-    },
-  },
-  {
-    path: "/reset",
-    name: "Reset",
-    component: Reset,
-    meta: {
-      title: "Reset Page",
+      title: "Auth Page",
       layout: "empty",
     },
   },

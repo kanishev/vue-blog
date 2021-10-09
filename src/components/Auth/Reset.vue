@@ -9,17 +9,25 @@
             <input type="text" placeholder="Email" v-model="email" />
             <email class="icon" />
           </div>
+          <p class="auth-text">
+            Уже вспомнили пароль?
+            <a
+              class="router-link"
+              href="#"
+              @click.prevent="$emit('togglePage', 'Login')"
+              >Войти в систему</a
+            >
+          </p>
         </div>
         <button>Reset</button>
         <div class="angle"></div>
       </form>
-      <div class="background"></div>
     </div>
   </div>
 </template>
 
 <script>
-import email from "../assets/Icons/envelope-regular.svg";
+import email from "../../assets/Icons/envelope-regular.svg";
 
 export default {
   name: "reset",
