@@ -91,7 +91,7 @@ export default {
             email: this.email,
           });
 
-          this.router.push("/");
+          this.$router.push("/");
           return;
         } catch (e) {
           return (this.formValidMessage = e.message);

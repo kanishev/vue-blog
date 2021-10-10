@@ -17,7 +17,13 @@ export default {
     return {};
   },
   created() {
-    console.log(firebase.auth().currentUser);
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$store.commit("updateUser", user);
+      if (user) {
+        this.$store.dispatch("getUser");
+        console.log(this.$store.state.profileEmail);
+      }
+    });
   },
   computed: {
     layout() {
