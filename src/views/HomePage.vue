@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import BlogPost from "../components/BlogPost.vue";
-import BlogCard from "../components/BlogCard.vue";
+import BlogPost from "../components/Blogs/BlogPost.vue";
+import BlogCard from "../components/Blogs/BlogCard.vue";
 
 export default {
   name: "Home",

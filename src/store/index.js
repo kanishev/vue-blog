@@ -28,6 +28,14 @@ export default new Vuex.Store({
       },
     ],
     isEditPost: null,
+    user: null,
+    editPost: null,
+    profileEmail: null,
+    profileFirstName: null,
+    profileLastName: null,
+    profileUsername: null,
+    profileId: null,
+    profileInitialized: null,
   },
   mutations: {
     toggleEdit(state, p) {

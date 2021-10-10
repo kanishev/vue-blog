@@ -1,11 +1,24 @@
 <template>
   <div class="form-wrap">
-    <component :is="authPage" @togglePage="a"></component>
+    <Modal
+      v-if="isModalActive"
+      :modalText="modalText"
+      @closeModal="isModalActive = false"
+    />
+    <Loader v-if="isLoaderActive" />
+    <component
+      :is="authPage"
+      @togglePage="togglePage"
+      @toggleModal="toggleModal"
+      @toggleLoader="toggleLoader"
+    ></component>
     <div class="background"></div>
   </div>
 </template>
 
 <script>
+import Modal from "../components/TheModal.vue";
+import Loader from "../components/TheLoader.vue";
 import Login from "../components/Auth/Login.vue";
 import Register from "../components/Auth/Register.vue";
 import Reset from "../components/Auth/Reset.vue";
@@ -15,11 +28,21 @@ export default {
   data() {
     return {
       page: "Login",
+      isModalActive: false,
+      modalText: "Hello",
+      isLoaderActive: false,
     };
   },
   methods: {
-    a(page) {
+    togglePage(page) {
       this.page = page;
+    },
+    toggleModal(message) {
+      this.modalText = message;
+      this.isModalActive = true;
+    },
+    toggleLoader(status) {
+      this.isLoaderActive = status;
     },
   },
   computed: {
@@ -27,7 +50,7 @@ export default {
       return this.page;
     },
   },
-  components: { Register, Reset, Login },
+  components: { Register, Reset, Login, Modal, Loader },
 };
 </script>
 

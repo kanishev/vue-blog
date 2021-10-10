@@ -9,7 +9,7 @@
           <ul v-show="!mobile">
             <router-link class="link" to="/">Домашяя</router-link>
             <router-link class="link" to="/blogs">Блог</router-link>
-            <router-link class="link" to="#">Создать блог</router-link>
+            <router-link class="link" to="/create">Создать блог</router-link>
             <router-link class="link" to="/auth">Войти</router-link>
           </ul>
         </div>
@@ -22,10 +22,10 @@
     ></menu-button>
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNavbar">
-        <router-link class="link" to="#">Домашяя</router-link>
-        <router-link class="link" to="#">Блог</router-link>
-        <router-link class="link" to="#">Создать блог</router-link>
-        <router-link class="link" to="#">Войти</router-link>
+        <router-link class="link" to="/">Домашяя</router-link>
+        <router-link class="link" to="/blogs">Блог</router-link>
+        <router-link class="link" to="/create">Создать блог</router-link>
+        <router-link class="link" to="/auth">Войти</router-link>
       </ul>
     </transition>
   </header>

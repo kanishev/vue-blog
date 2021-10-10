@@ -15,12 +15,12 @@
     <div class="blog-image">
       <img
         v-if="post.welcomeScreen"
-        :src="require(`../assets/blogPhotos/${post.photo}.jpg`)"
+        :src="require(`../../assets/blogPhotos/${post.photo}.jpg`)"
         alt="image"
       />
       <img
         v-else
-        :src="require(`../assets/blogPhotos/${post.blogCoverPhoto}.jpg`)"
+        :src="require(`../../assets/blogPhotos/${post.blogCoverPhoto}.jpg`)"
         alt="image"
       />
     </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Arrow from "../assets/Icons/arrow-right-light.svg";
+import Arrow from "../../assets/Icons/arrow-right-light.svg";
 export default {
   props: ["post"],
   name: "blogPost",

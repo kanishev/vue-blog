@@ -8,12 +8,17 @@
 import EmptyLayout from "./layouts/EmptyLayout.vue";
 import MainLayout from "./layouts/MainLayout.vue";
 
+import firebase from "firebase/app";
+import "firebase/auth";
+
 export default {
   name: "app",
   data() {
     return {};
   },
-  created() {},
+  created() {
+    console.log(firebase.auth().currentUser);
+  },
   computed: {
     layout() {
       return (this.$route.meta.layout || "empty") + "-layout";
@@ -116,6 +121,10 @@ button,
   background-color: rgba(128, 128, 128, 0.5) !important;
 }
 
+button:disabled {
+  background: lightgray;
+}
+
 .blog-card-wrap {
   position: relative;
   padding: 80px 16px;
@@ -141,5 +150,11 @@ button,
       grid-template-columns: repeat((4, 1fr));
     }
   }
+}
+
+.validation {
+  padding: 18px 0;
+  text-align: center;
+  background: gold;
 }
 </style>
