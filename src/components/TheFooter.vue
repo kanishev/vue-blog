@@ -46,6 +46,11 @@ import Instagram from "../assets/Icons/instagram-brands.svg";
 import LinkedIn from "../assets/Icons/linkedin-brands.svg";
 
 export default {
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
   components: { YouTube, Twitter, Instagram, LinkedIn },
 };
 </script>

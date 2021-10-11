@@ -10,9 +10,16 @@
             <router-link class="link" to="/">Домашяя</router-link>
             <router-link class="link" to="/blogs">Блог</router-link>
             <router-link class="link" to="/create">Создать блог</router-link>
-            <router-link class="link" to="/auth">Войти</router-link>
+            <router-link v-if="!user" class="link" to="/auth"
+              >Войти</router-link
+            >
           </ul>
-          <div class="profile" ref="profile" @click="toggleProfileMenu">
+          <div
+            v-if="user"
+            class="profile"
+            ref="profile"
+            @click="toggleProfileMenu"
+          >
             <span>{{ this.$store.state.profileInitials }}</span>
             <div class="profile-menu" v-show="isProfileMenuActive">
               <div class="info">
@@ -67,7 +74,7 @@
         <router-link class="link" to="/">Домашяя</router-link>
         <router-link class="link" to="/blogs">Блог</router-link>
         <router-link class="link" to="/create">Создать блог</router-link>
-        <router-link class="link" to="/auth">Войти</router-link>
+        <router-link v-if="!user" class="link" to="/auth">Войти</router-link>
       </ul>
     </transition>
   </header>
@@ -78,6 +85,9 @@ import menuButton from "../assets/Icons/bars-regular.svg";
 import User from "../assets/Icons/user-alt-light.svg";
 import Admin from "../assets/Icons/user-crown-light.svg";
 import SignOut from "../assets/Icons/sign-out-alt-regular.svg";
+
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
   name: "navigation",
@@ -93,6 +103,11 @@ export default {
       windowWidth: false,
     };
   },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
   methods: {
     checkScreen() {
       this.windowWidth = window.innerWidth;
@@ -106,6 +121,10 @@ export default {
       this.mobileNavbar = false;
 
       return;
+    },
+    signOut() {
+      firebase.auth().signOut();
+      window.location.reload();
     },
     toggleProfileMenu(e) {
       if (e.target === this.$refs.profile) {

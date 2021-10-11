@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-wrapper no-user">
+  <div class="blog-wrapper" :class="{ 'no-user': !user }">
     <div class="blog-content">
       <div>
         <h2>{{ post.title }}</h2>
@@ -32,6 +32,11 @@ import Arrow from "../../assets/Icons/arrow-right-light.svg";
 export default {
   props: ["post"],
   name: "blogPost",
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
   components: { Arrow },
 };
 </script>
