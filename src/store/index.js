@@ -36,7 +36,7 @@ export default new Vuex.Store({
     profileEmail: null,
     profileFirstName: null,
     profileLastName: null,
-    profileUsername: null,
+    profileUserName: null,
     profileId: null,
     profileInitials: null,
   },
@@ -46,19 +46,22 @@ export default new Vuex.Store({
     },
     toggleEdit(state, p) {
       state.isEditPost = p;
-      console.log(state.isEditPost);
     },
     setProfile(state, p) {
       state.profileId = p.id;
       state.profileEmail = p.data().email;
       state.profileFirstName = p.data().firstName;
       state.profileLastName = p.data().lastName;
-      state.profileUsername = p.data().userName;
+      state.profileUserName = p.data().userName;
     },
     setProfileInitials(state) {
       state.profileInitials =
         state.profileFirstName.match(/(\b\S)?/g).join("") +
         state.profileLastName.match(/(\b\S)?/g).join("");
+    },
+    changeProfileInfo(state, [key, data]) {
+      console.log(key);
+      state[key] = data;
     },
   },
   actions: {
@@ -69,7 +72,15 @@ export default new Vuex.Store({
       const dbResults = await dataBase.get();
       ctx.commit("setProfile", dbResults);
       ctx.commit("setProfileInitials");
-      console.log(dbResults);
+    },
+    async updateUserProfile(ctx) {
+      const dataBase = await db.collection("users").doc(ctx.state.profileId);
+      await dataBase.update({
+        firstName: ctx.state.profileFirstName,
+        lastName: ctx.state.profileLastName,
+        userName: ctx.state.profileUserName,
+      });
+      ctx.commit("setProfileInitials");
     },
   },
   modules: {},

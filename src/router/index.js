@@ -4,6 +4,8 @@ import Home from "../views/HomePage.vue";
 import Blogs from "../views/BlogsPage.vue";
 import Auth from "../views/AuthPage.vue";
 import Create from "../views/CreatePage.vue";
+import Profile from "../views/ProfilePage.vue";
+import Admin from "../views/AdminPage.vue";
 
 Vue.use(VueRouter);
 
@@ -41,6 +43,24 @@ const routes = [
     component: Create,
     meta: {
       title: "Create Page",
+      layout: "main",
+    },
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
+    meta: {
+      title: "Profile Page",
+      layout: "main",
+    },
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: Admin,
+    meta: {
+      title: "Admin Page",
       layout: "main",
     },
   },

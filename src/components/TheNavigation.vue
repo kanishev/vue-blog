@@ -39,7 +39,7 @@
               </div>
               <div class="options">
                 <div class="option">
-                  <router-link class="option" to="">
+                  <router-link class="option" to="/profile">
                     <user class="icon" />
                     <p>Profile</p>
                   </router-link>
@@ -47,7 +47,7 @@
               </div>
               <div class="options">
                 <div class="option">
-                  <router-link class="option" to="">
+                  <router-link class="option" to="/admin">
                     <admin class="icon" />
                     <p>Admin</p>
                   </router-link>
