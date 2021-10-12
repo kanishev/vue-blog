@@ -1,5 +1,5 @@
 <template>
-  <h1>Create Page</h1>
+  <div class="create"></div>
 </template>
 
 <script>

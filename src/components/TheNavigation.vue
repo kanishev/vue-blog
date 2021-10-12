@@ -46,14 +46,6 @@
                 </div>
               </div>
               <div class="options">
-                <div class="option">
-                  <router-link class="option" to="/admin">
-                    <admin class="icon" />
-                    <p>Admin</p>
-                  </router-link>
-                </div>
-              </div>
-              <div class="options">
                 <div class="option" @click="signOut">
                   <signOut class="icon" />
                   <p>Sign Out</p>
@@ -83,7 +75,6 @@
 <script>
 import menuButton from "../assets/Icons/bars-regular.svg";
 import User from "../assets/Icons/user-alt-light.svg";
-import Admin from "../assets/Icons/user-crown-light.svg";
 import SignOut from "../assets/Icons/sign-out-alt-regular.svg";
 
 import firebase from "firebase/app";
@@ -138,7 +129,6 @@ export default {
   components: {
     menuButton,
     User,
-    Admin,
     SignOut,
   },
 };
