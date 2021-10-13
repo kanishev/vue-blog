@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "../firebase/firebaseInit";
+import post from "./post";
 
 Vue.use(Vuex);
 
@@ -83,5 +84,5 @@ export default new Vuex.Store({
       ctx.commit("setProfileInitials");
     },
   },
-  modules: {},
+  modules: { post },
 });
