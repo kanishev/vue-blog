@@ -1,10 +1,15 @@
 export default {
   state: {
     postHTML: "Write your post title here",
-    postTitle: "",
+    postTitle: "Hello",
     postName: "",
     postImageName: "",
     postImageURL: "",
-    postImagePreview: "",
+    postImagePreview: false,
+  },
+  mutations: {
+    updatePostInfo(state, { key, p }) {
+      state[key] = p;
+    },
   },
 };

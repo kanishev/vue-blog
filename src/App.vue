@@ -21,7 +21,6 @@ export default {
       this.$store.commit("updateUser", user);
       if (user) {
         this.$store.dispatch("getUser");
-        console.log(this.$store.state.profileEmail);
       }
     });
   },

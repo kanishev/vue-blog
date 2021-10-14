@@ -1,11 +1,15 @@
 <template>
   <div class="create-post">
+    <BlogImagePreview
+      v-show="this.$store.state.post.postImagePreview"
+      @closeImagePreview="closePreview"
+    />
     <div class="container">
       <div class="error-message" :class="{ invisible: !error }">
         <p><span>Error:</span> {{ this.errorMessage }}</p>
       </div>
       <div class="post-info">
-        <input type="text" placeholder="enter post title" v-model="blogTitle" />
+        <input type="text" placeholder="enter post title" v-model="postTitle" />
         <div class="upload-file">
           <label for="blog-image">Upload cover image</label>
           <input
@@ -13,14 +17,16 @@
             ref="image"
             id="blog-image"
             accept=".png, .jpeg, .jpg"
+            @change="changeImage"
           />
           <button
             class="preview"
-            :class="{ 'button-inactive': !this.$store.state.postImageURL }"
+            :class="{ 'button-inactive': !this.$store.state.post.postImageURL }"
+            @click="openPreview"
           >
             Preview
           </button>
-          <span>File Chosen: {{ this.$store.state.postImageName }}</span>
+          <span>File Chosen: {{ this.$store.state.post.postImageName }}</span>
         </div>
       </div>
       <div class="editor">
@@ -28,6 +34,7 @@
           :editorOptions="editorSettings"
           v-model="postHTML"
           useCustomImageHandler
+          @image-added="imageHandler"
         />
       </div>
       <div class="blog-actions">
@@ -39,17 +46,20 @@
 </template>
 
 <script>
+import BlogImagePreview from "../components/Blogs/BlogImagePreview.vue";
+import firebase from "firebase/app";
+import "firebase/storage";
 import Quill from "quill";
 window.Quill = Quill;
 const ImageResize = require("quill-image-resize-module").default;
 Quill.register("modules/imageResize", ImageResize);
 
 export default {
-  name: "Create Page",
+  name: "CreatePage",
   data() {
     return {
       error: null,
-      postHTML: "",
+      file: null,
       errorMessage: "",
       editorSettings: {
         modules: {
@@ -58,6 +68,58 @@ export default {
       },
     };
   },
+  computed: {
+    profileId() {
+      return this.$store.state.profileId;
+    },
+    postCoverPhotoName() {
+      return this.$store.state.postImageName;
+    },
+    postTitle: {
+      get() {
+        return this.$store.state.post.postTitle;
+      },
+      set(p) {
+        this.$store.commit("updatePostInfo", { key: "postTitle", p });
+      },
+    },
+    postHTML: {
+      get() {
+        return this.$store.state.post.postHTML;
+      },
+      set(p) {
+        this.$store.commit("updatePostInfo", { key: "postHTML", p });
+      },
+    },
+  },
+  methods: {
+    changeImage() {
+      this.file = this.$refs.image.files[0];
+      const fileName = this.file.name;
+
+      this.$store.commit("updatePostInfo", {
+        key: "postImageName",
+        p: fileName,
+      });
+      this.$store.commit("updatePostInfo", {
+        key: "postImageURL",
+        p: URL.createObjectURL(this.file),
+      });
+    },
+    openPreview() {
+      this.$store.commit("updatePostInfo", {
+        key: "postImagePreview",
+        p: true,
+      });
+    },
+    closePreview() {
+      this.$store.commit("updatePostInfo", {
+        key: "postImagePreview",
+        p: false,
+      });
+    },
+  },
+  components: { BlogImagePreview },
 };
 </script>
 
