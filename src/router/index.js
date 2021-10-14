@@ -5,6 +5,7 @@ import Blogs from "../views/BlogsPage.vue";
 import Auth from "../views/AuthPage.vue";
 import Create from "../views/CreatePage.vue";
 import Profile from "../views/ProfilePage.vue";
+import Preview from "../views/PreviewPage.vue";
 
 Vue.use(VueRouter);
 
@@ -52,6 +53,15 @@ const routes = [
     meta: {
       title: "Profile Page",
       layout: "main",
+    },
+  },
+  {
+    path: "/preview",
+    name: "Preview",
+    component: Preview,
+    meta: {
+      title: "Preview Page",
+      layout: "empty",
     },
   },
   {

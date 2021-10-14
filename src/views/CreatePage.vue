@@ -39,7 +39,9 @@
       </div>
       <div class="blog-actions">
         <button>Publish Blog</button>
-        <router-link class="router-button" to="#">Post Preview</router-link>
+        <router-link class="router-button" to="/preview"
+          >Post Preview</router-link
+        >
       </div>
     </div>
   </div>
@@ -47,8 +49,7 @@
 
 <script>
 import BlogImagePreview from "../components/Blogs/BlogImagePreview.vue";
-import firebase from "firebase/app";
-import "firebase/storage";
+import { imageHandler } from "../utils/imageHandler";
 import Quill from "quill";
 window.Quill = Quill;
 const ImageResize = require("quill-image-resize-module").default;
@@ -117,6 +118,9 @@ export default {
         key: "postImagePreview",
         p: false,
       });
+    },
+    imageHandler(file, Editor, cursorLocation, resetUploader) {
+      return imageHandler(file, Editor, cursorLocation, resetUploader);
     },
   },
   components: { BlogImagePreview },
