@@ -2,12 +2,19 @@
   <div class="blog-wrapper" :class="{ 'no-user': !user }">
     <div class="blog-content">
       <div>
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.blogHTML }}</p>
+        <h2>{{ post.postTitle }}</h2>
+        <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
+        <p class="content-preview" v-else v-html="post.postHTML">
+          {{ post.blogPost }}
+        </p>
         <router-link v-if="post.main" class="link link-light" to="#">
           Login/Register <Arrow class="arrow arrow-light" />
         </router-link>
-        <router-link v-else class="link" to="#">
+        <router-link
+          class="link"
+          v-else
+          :to="{ name: 'Post', params: { id: this.post.postId } }"
+        >
           View The Post<Arrow class="arrow" />
         </router-link>
       </div>
@@ -18,11 +25,7 @@
         :src="require(`../../assets/blogPhotos/${post.photo}.jpg`)"
         alt="image"
       />
-      <img
-        v-else
-        :src="require(`../../assets/blogPhotos/${post.blogCoverPhoto}.jpg`)"
-        alt="image"
-      />
+      <img v-else :src="post.postCoverImage" alt="image" />
     </div>
   </div>
 </template>

@@ -2,12 +2,11 @@
   <div class="post-view">
     <div class="container quil-wrapper">
       <h2>{{ this.postTitle }}</h2>
-      <img :src="postImage" alt="coverImg" />
+      <img :src="postImage" v-if="postImage" alt="coverImg" />
       <div class="post-content ql-editor" v-html="postHTML"></div>
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: "preview",
@@ -25,7 +24,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .post-view {
   min-height: 100%;
 

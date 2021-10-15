@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/HomePage.vue";
 import Blogs from "../views/BlogsPage.vue";
+import Post from "../views/PostPage.vue";
 import Auth from "../views/AuthPage.vue";
 import Create from "../views/CreatePage.vue";
 import Profile from "../views/ProfilePage.vue";
@@ -25,6 +26,15 @@ const routes = [
     component: Blogs,
     meta: {
       title: "Blogs Page",
+      layout: "main",
+    },
+  },
+  {
+    path: "/post/:id",
+    name: "Post",
+    component: Post,
+    meta: {
+      title: "Post Page",
       layout: "main",
     },
   },

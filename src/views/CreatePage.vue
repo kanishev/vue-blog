@@ -4,6 +4,7 @@
       v-show="this.$store.state.post.postImagePreview"
       @closeImagePreview="closePreview"
     />
+    <Loader v-show="isLoading" />
     <div class="container">
       <div class="error-message" :class="{ invisible: !error }">
         <p><span>Error:</span> {{ this.errorMessage }}</p>
@@ -38,7 +39,7 @@
         />
       </div>
       <div class="blog-actions">
-        <button>Publish Blog</button>
+        <button @click="uploadPost">Publish Blog</button>
         <router-link class="router-button" to="/preview"
           >Post Preview</router-link
         >
@@ -49,11 +50,17 @@
 
 <script>
 import BlogImagePreview from "../components/Blogs/BlogImagePreview.vue";
+import Loader from "../components/TheLoader.vue";
+
 import { imageHandler } from "../utils/imageHandler";
 import Quill from "quill";
 window.Quill = Quill;
 const ImageResize = require("quill-image-resize-module").default;
 Quill.register("modules/imageResize", ImageResize);
+
+import firebase from "firebase/app";
+import "firebase/storage";
+import db from "../firebase/firebaseInit";
 
 export default {
   name: "CreatePage",
@@ -61,6 +68,7 @@ export default {
     return {
       error: null,
       file: null,
+      isLoading: false,
       errorMessage: "",
       editorSettings: {
         modules: {
@@ -73,8 +81,8 @@ export default {
     profileId() {
       return this.$store.state.profileId;
     },
-    postCoverPhotoName() {
-      return this.$store.state.postImageName;
+    postCoverImageName() {
+      return this.$store.state.post.postImageName;
     },
     postTitle: {
       get() {
@@ -122,8 +130,68 @@ export default {
     imageHandler(file, Editor, cursorLocation, resetUploader) {
       return imageHandler(file, Editor, cursorLocation, resetUploader);
     },
+    uploadPost() {
+      console.log(this.postHTML);
+      if (this.postTitle.length !== 0 && this.postHTML.length !== 0) {
+        if (this.file) {
+          this.isLoading = true;
+          const storageRef = firebase.storage().ref();
+          const docRef = storageRef.child(
+            `documents/blogPostImages/${this.$store.state.post.postImageName}`
+          );
+
+          console.log(this.postCoverImageName);
+
+          docRef.put(this.file).on(
+            "state_changed",
+            (snapShot) => {
+              console.log(snapShot);
+            },
+            (err) => {
+              console.log(err);
+              this.isLoading = false;
+            },
+            async () => {
+              const downloadURL = await docRef.getDownloadURL();
+              const timestamp = await Date.now();
+              const dataBase = db.collection("blogPosts").doc();
+
+              await dataBase.set({
+                postID: dataBase.id,
+                postHTML: this.postHTML,
+                postCoverImage: downloadURL,
+                postImageName: this.postCoverImageName,
+                postTitle: this.postTitle,
+                profileId: this.profileId,
+                date: timestamp,
+              });
+              this.isLoading = false;
+              this.$router.push("/post");
+            }
+          );
+          return;
+        }
+        this.errorMessage = "Needs cover image";
+        this.error = true;
+
+        setTimeout(() => {
+          this.error = false;
+        }, 3000);
+
+        return;
+      }
+
+      this.errorMessage = "Fill all inputs";
+      this.error = true;
+
+      setTimeout(() => {
+        this.error = false;
+      }, 3000);
+
+      return;
+    },
   },
-  components: { BlogImagePreview },
+  components: { BlogImagePreview, Loader },
 };
 </script>
 

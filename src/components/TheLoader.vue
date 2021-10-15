@@ -21,10 +21,11 @@ export default {
   display: flex;
   height: 100%;
   width: 100%;
-  z-index: 30;
+  top: 0;
   background-color: rgba(0, 0, 0, 0.3);
   justify-content: center;
   align-items: center;
+  z-index: 30;
 }
 
 .lds-ellipsis {

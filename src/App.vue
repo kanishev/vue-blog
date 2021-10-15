@@ -23,6 +23,7 @@ export default {
         this.$store.dispatch("getUser");
       }
     });
+    this.$store.dispatch("getPost");
   },
   computed: {
     layout() {

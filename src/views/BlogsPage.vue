@@ -25,8 +25,7 @@ export default {
   },
   computed: {
     sampleBlogCards() {
-      console.log(this.$route);
-      return this.$store.state.sampleBlogCards;
+      return this.$store.state.post.posts;
     },
     isEditPost: {
       get() {
