@@ -7,6 +7,7 @@ import Auth from "../views/AuthPage.vue";
 import Create from "../views/CreatePage.vue";
 import Profile from "../views/ProfilePage.vue";
 import Preview from "../views/PreviewPage.vue";
+import Edit from "../views/EditPage.vue";
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,15 @@ const routes = [
     component: Post,
     meta: {
       title: "Post Page",
+      layout: "main",
+    },
+  },
+  {
+    path: "/edit/:id",
+    name: "Edit",
+    component: Edit,
+    meta: {
+      title: "Edit Page",
       layout: "main",
     },
   },

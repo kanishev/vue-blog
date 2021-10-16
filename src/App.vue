@@ -1,6 +1,7 @@
 <template>
   <div class="app-wrapper">
-    <component :is="layout"> </component>
+    <component :is="layout" v-if="this.$store.state.post.isPostLoaded">
+    </component>
   </div>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
   <figure class="blog-card">
     <div class="icons" v-show="isEditPost && $route.name == 'Blogs'">
-      <div class="icon">
+      <div class="icon" @click="editPost">
         <Edit class="edit" />
       </div>
-      <div class="icon">
+      <div class="icon" @click="deletePost">
         <Delete class="delete" />
       </div>
     </div>
@@ -19,7 +19,7 @@
       </p>
       <router-link
         class="link"
-        :to="{ name: 'Post', params: { id: this.post.postID } }"
+        :to="{ name: 'Post', params: { id: this.post.postId } }"
       >
         View The Post <Arrow class="arrow" />
       </router-link>
@@ -38,6 +38,14 @@ export default {
   computed: {
     isEditPost() {
       return this.$store.state.isEditPost;
+    },
+  },
+  methods: {
+    deletePost() {
+      this.$store.dispatch("deletePost", this.post.postId);
+    },
+    editPost() {
+      this.$router.push({ name: "Edit", params: { id: this.post.postId } });
     },
   },
   components: {

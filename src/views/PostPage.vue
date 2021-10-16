@@ -29,7 +29,8 @@ export default {
   },
   async mounted() {
     this.currentPost = await this.$store.state.post.posts.filter((p) => {
-      return p.postID === this.$route.params.id;
+      console.log(p);
+      return p.postId === this.$route.params.id;
     })[0];
   },
 };

@@ -39,9 +39,9 @@
         />
       </div>
       <div class="blog-actions">
-        <button @click="uploadPost">Publish Blog</button>
+        <button @click="updatePost">Save Changes</button>
         <router-link class="router-button" to="/preview"
-          >Post Preview</router-link
+          >Post Changes</router-link
         >
       </div>
     </div>
@@ -70,12 +70,23 @@ export default {
       file: null,
       isLoading: false,
       errorMessage: "",
+      routeId: null,
+      currentPost: null,
       editorSettings: {
         modules: {
           imageResize: {},
         },
       },
     };
+  },
+  async mounted() {
+    this.routeId = this.$route.params.id;
+    this.currentPost = await this.$store.state.post.posts.filter((p) => {
+      return p.postId === this.$route.params.id;
+    })[0];
+
+    console.log(this.currentPost);
+    this.$store.commit("setPostState", this.currentPost);
   },
   computed: {
     profileId() {
@@ -130,7 +141,9 @@ export default {
     imageHandler(file, Editor, cursorLocation, resetUploader) {
       return imageHandler(file, Editor, cursorLocation, resetUploader);
     },
-    uploadPost() {
+    async updatePost() {
+      const dataBase = db.collection("blogPosts").doc(this.routeId);
+
       if (this.postTitle.length !== 0 && this.postHTML.length !== 0) {
         if (this.file) {
           this.isLoading = true;
@@ -138,8 +151,6 @@ export default {
           const docRef = storageRef.child(
             `documents/blogPostImages/${this.$store.state.post.postImageName}`
           );
-
-          console.log(this.postCoverImageName);
 
           docRef.put(this.file).on(
             "state_changed",
@@ -152,33 +163,32 @@ export default {
             },
             async () => {
               const downloadURL = await docRef.getDownloadURL();
-              const timestamp = await Date.now();
-              const dataBase = db.collection("blogPosts").doc();
 
-              await dataBase.set({
-                postID: dataBase.id,
+              await dataBase.update({
                 postHTML: this.postHTML,
                 postCoverImage: downloadURL,
                 postImageName: this.postCoverImageName,
                 postTitle: this.postTitle,
-                profileId: this.profileId,
-                date: timestamp,
               });
 
-              await this.$store.dispatch("getPost");
+              await this.$store.dispatch("updatePost", this.routeId);
+
               this.isLoading = false;
               this.$router.push({ name: "Post", params: { id: dataBase.id } });
             }
           );
           return;
         }
-        this.errorMessage = "Needs cover image";
-        this.error = true;
 
-        setTimeout(() => {
-          this.error = false;
-        }, 3000);
+        this.isLoading = true;
+        await dataBase.update({
+          postHTML: this.postHTML,
+          postTitle: this.postTitle,
+        });
 
+        await this.$store.dispatch("updatePost", this.routeId);
+        this.isLoading = false;
+        this.$router.push({ name: "Post", params: { id: dataBase.id } });
         return;
       }
 
