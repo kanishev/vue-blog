@@ -8,10 +8,10 @@ export function imageHandler(file, Editor, cursorLocation, resetUploader) {
   docRef.put(file).on(
     "state_changed",
     (snapshot) => {
-      console.log(snapshot);
+      console.warn(snapshot);
     },
     (err) => {
-      console.log(err);
+      console.warn(err);
     },
     async () => {
       const downloadURL = await docRef.getDownloadURL();

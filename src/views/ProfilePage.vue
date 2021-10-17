@@ -36,11 +36,11 @@
 </template>
 
 <script>
-import Modal from "../components/TheModal";
+import Modal from "../components/AppModal";
 import AdminIcon from "../assets/Icons/user-crown-light.svg";
 
 export default {
-  name: "Profile",
+  name: "profilePage",
   data() {
     return {
       isModalActive: false,

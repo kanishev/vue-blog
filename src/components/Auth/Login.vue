@@ -39,7 +39,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
-  name: "Login",
+  name: "authLogin",
   data() {
     return {
       email: "",
@@ -65,7 +65,6 @@ export default {
             this.password
           );
 
-          console.log(firebase.auth().currentUser.uid);
           this.$router.push("/");
         } catch (err) {
           this.formValidMessage = err.message;

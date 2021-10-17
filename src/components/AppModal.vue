@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name: "appModal",
   props: ["modalText"],
 };
 </script>

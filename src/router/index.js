@@ -1,14 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/HomePage.vue";
-import Blogs from "../views/BlogsPage.vue";
-import Post from "../views/PostPage.vue";
-import Auth from "../views/AuthPage.vue";
-import Create from "../views/CreatePage.vue";
-import Profile from "../views/ProfilePage.vue";
-import Preview from "../views/PreviewPage.vue";
-import Edit from "../views/EditPage.vue";
-
 import store from "../store/index";
 
 Vue.use(VueRouter);
@@ -26,7 +18,7 @@ const routes = [
   {
     path: "/blogs",
     name: "Blogs",
-    component: Blogs,
+    component: () => import("../views/BlogsPage.vue"),
     meta: {
       title: "Blogs Page",
       layout: "main",
@@ -35,7 +27,7 @@ const routes = [
   {
     path: "/post/:id",
     name: "Post",
-    component: Post,
+    component: () => import("../views/PostPage.vue"),
     meta: {
       title: "Post Page",
       layout: "main",
@@ -44,7 +36,7 @@ const routes = [
   {
     path: "/edit/:id",
     name: "Edit",
-    component: Edit,
+    component: () => import("../views/EditPage.vue"),
     meta: {
       title: "Edit Page",
       layout: "main",
@@ -53,7 +45,7 @@ const routes = [
   {
     path: "/auth",
     name: "Auth",
-    component: Auth,
+    component: () => import("../views/AuthPage.vue"),
     meta: {
       title: "Auth Page",
       layout: "empty",
@@ -62,7 +54,7 @@ const routes = [
   {
     path: "/create",
     name: "Create",
-    component: Create,
+    component: () => import("../views/CreatePage.vue"),
     meta: {
       title: "Create Page",
       layout: "main",
@@ -71,7 +63,7 @@ const routes = [
   {
     path: "/profile",
     name: "Profile",
-    component: Profile,
+    component: () => import("../views/ProfilePage.vue"),
     meta: {
       title: "Profile Page",
       layout: "main",
@@ -80,7 +72,7 @@ const routes = [
   {
     path: "/preview",
     name: "Preview",
-    component: Preview,
+    component: () => import("../views/PreviewPage.vue"),
     meta: {
       title: "Preview Page",
       layout: "empty",
@@ -103,7 +95,10 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (!store.state.user && to.name == "Edit") {
+  if (
+    (!store.state.user && to.name == "Edit") ||
+    (!store.state.user && to.name == "Create")
+  ) {
     next({ name: "Auth" });
   } else {
     document.title = `${to.meta.title} | Blog`;

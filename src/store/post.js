@@ -15,13 +15,11 @@ export default {
   mutations: {
     updatePostInfo(state, { key, p }) {
       state[key] = p;
-      console.log(state);
     },
     filterPosts(state, payload) {
       state.posts = state.posts.filter((p) => p.postId !== payload);
     },
     setPostState(state, p) {
-      console.log(p);
       state.postTitle = p.postTitle;
       state.postHTML = p.postHTML;
       state.postImageURL = p.postImageURL;
@@ -34,7 +32,6 @@ export default {
       const dbResults = await dataBase.get();
 
       dbResults.forEach((doc) => {
-        console.log(doc);
         if (!state.posts.some((p) => p.postId === doc.id)) {
           const data = {
             postId: doc.data().postID,

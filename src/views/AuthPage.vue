@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import Modal from "../components/TheModal.vue";
-import Loader from "../components/TheLoader.vue";
+import Modal from "../components/AppModal.vue";
+import Loader from "../components/AppLoader.vue";
 import Login from "../components/Auth/Login.vue";
 import Register from "../components/Auth/Register.vue";
 import Reset from "../components/Auth/Reset.vue";

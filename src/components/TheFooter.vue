@@ -46,6 +46,7 @@ import Instagram from "../assets/Icons/instagram-brands.svg";
 import LinkedIn from "../assets/Icons/linkedin-brands.svg";
 
 export default {
+  name: "theFooter",
   computed: {
     user() {
       return this.$store.state.user;

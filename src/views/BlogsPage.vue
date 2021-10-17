@@ -17,7 +17,7 @@
 <script>
 import BlogCard from "../components/Blogs/BlogCard.vue";
 export default {
-  name: "blogs",
+  name: "blogsPage",
   data() {
     return {
       isEdit: false,

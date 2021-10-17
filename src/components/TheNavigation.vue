@@ -85,7 +85,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
-  name: "navigation",
+  name: "theNavigation",
   created() {
     window.addEventListener("resize", this.checkScreen);
     this.checkScreen();

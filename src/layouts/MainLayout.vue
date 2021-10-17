@@ -10,6 +10,7 @@
 import TheFooter from "../components/TheFooter.vue";
 import TheNavigation from "../components/TheNavigation.vue";
 export default {
+  name: "mainLayout",
   components: { TheFooter, TheNavigation },
 };
 </script>

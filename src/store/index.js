@@ -39,7 +39,6 @@ export default new Vuex.Store({
         state.profileLastName.match(/(\b\S)?/g).join("");
     },
     changeProfileInfo(state, [key, data]) {
-      console.log(key);
       state[key] = data;
     },
   },

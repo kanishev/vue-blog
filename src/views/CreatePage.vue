@@ -50,7 +50,7 @@
 
 <script>
 import BlogImagePreview from "../components/Blogs/BlogImagePreview.vue";
-import Loader from "../components/TheLoader.vue";
+import Loader from "../components/AppLoader.vue";
 
 import { imageHandler } from "../utils/imageHandler";
 import Quill from "quill";
@@ -139,15 +139,13 @@ export default {
             `documents/blogPostImages/${this.$store.state.post.postImageName}`
           );
 
-          console.log(this.postCoverImageName);
-
           docRef.put(this.file).on(
             "state_changed",
             (snapShot) => {
-              console.log(snapShot);
+              console.warn(snapShot);
             },
             (err) => {
-              console.log(err);
+              console.warn(err);
               this.isLoading = false;
             },
             async () => {

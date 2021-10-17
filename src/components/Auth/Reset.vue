@@ -35,7 +35,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
-  name: "reset",
+  name: "authReset",
   data() {
     return {
       email: "",

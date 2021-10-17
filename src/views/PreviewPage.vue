@@ -9,7 +9,7 @@
 </template>
 <script>
 export default {
-  name: "preview",
+  name: "previewPage",
   computed: {
     postTitle() {
       return this.$store.state.post.postTitle;

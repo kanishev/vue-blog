@@ -11,6 +11,7 @@
 import close from "../../assets/Icons/times-circle-light.svg";
 export default {
   props: ["modalText"],
+  name: "blogImage",
   components: { close },
   computed: {
     postCoverImage() {

@@ -50,7 +50,7 @@
 
 <script>
 import BlogImagePreview from "../components/Blogs/BlogImagePreview.vue";
-import Loader from "../components/TheLoader.vue";
+import Loader from "../components/AppLoader.vue";
 
 import { imageHandler } from "../utils/imageHandler";
 import Quill from "quill";
@@ -63,7 +63,7 @@ import "firebase/storage";
 import db from "../firebase/firebaseInit";
 
 export default {
-  name: "CreatePage",
+  name: "EditPage",
   data() {
     return {
       error: null,
@@ -107,7 +107,6 @@ export default {
         return this.$store.state.post.postHTML;
       },
       set(p) {
-        console.log("1");
         this.$store.commit("updatePostInfo", { key: "postHTML", p });
       },
     },
@@ -155,10 +154,10 @@ export default {
           docRef.put(this.file).on(
             "state_changed",
             (snapShot) => {
-              console.log(snapShot);
+              console.warn(snapShot);
             },
             (err) => {
-              console.log(err);
+              console.warn(err);
               this.isLoading = false;
             },
             async () => {
