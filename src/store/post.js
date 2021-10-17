@@ -15,6 +15,7 @@ export default {
   mutations: {
     updatePostInfo(state, { key, p }) {
       state[key] = p;
+      console.log(state);
     },
     filterPosts(state, payload) {
       state.posts = state.posts.filter((p) => p.postId !== payload);
@@ -65,7 +66,7 @@ export default {
       return state.posts.slice(0, 2);
     },
     blogPostsCards(state) {
-      return state.posts.slice(2, state.posts.length);
+      return state.posts;
     },
   },
 };

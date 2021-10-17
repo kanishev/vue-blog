@@ -1,29 +1,29 @@
 <template>
   <form @submit.prevent="register" class="register">
     <p class="auth-text">
-      Already have an account?
+      Уже есть аккаунт?
       <a
         class="router-link"
         href="#"
         @click.prevent="$emit('togglePage', 'Login')"
-        >Log In</a
+        >Войти</a
       >
     </p>
-    <h2>Create Your Blog Accaunt</h2>
+    <h2>Sign Up</h2>
     <div class="inputs">
       <div class="validation" v-if="formValidMessage">
         <p>{{ this.formValidMessage }}</p>
       </div>
       <div class="input">
-        <input type="text" placeholder="First Name" v-model="firstName" />
+        <input type="text" placeholder="Имя" v-model="firstName" />
         <user class="icon" />
       </div>
       <div class="input">
-        <input type="text" placeholder="Last Name" v-model="lastName" />
+        <input type="text" placeholder="Фамилия" v-model="lastName" />
         <user class="icon" />
       </div>
       <div class="input">
-        <input type="text" placeholder="Username" v-model="userName" />
+        <input type="text" placeholder="Никнейм" v-model="userName" />
         <user class="icon" />
       </div>
       <div class="input">
@@ -35,7 +35,7 @@
         <password class="icon" />
       </div>
     </div>
-    <button type="submit">Sign Up</button>
+    <button type="submit">Зарегистрироваться</button>
     <div class="angle"></div>
   </form>
 </template>

@@ -9,6 +9,8 @@ import Profile from "../views/ProfilePage.vue";
 import Preview from "../views/PreviewPage.vue";
 import Edit from "../views/EditPage.vue";
 
+import store from "../store/index";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -101,8 +103,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | Blog`;
-  next();
+  if (!store.state.user && to.name == "Edit") {
+    next({ name: "Auth" });
+  } else {
+    document.title = `${to.meta.title} | Blog`;
+    next();
+  }
 });
 
 export default router;

@@ -12,7 +12,7 @@
       <div class="post-info">
         <input type="text" placeholder="enter post title" v-model="postTitle" />
         <div class="upload-file">
-          <label for="blog-image">Upload cover image</label>
+          <label for="blog-image">Загрузить изображение</label>
           <input
             type="file"
             ref="image"
@@ -27,7 +27,7 @@
           >
             Preview
           </button>
-          <span>File Chosen: {{ this.$store.state.post.postImageName }}</span>
+          <span>Файл выбран: {{ this.$store.state.post.postImageName }}</span>
         </div>
       </div>
       <div class="editor">
@@ -39,9 +39,9 @@
         />
       </div>
       <div class="blog-actions">
-        <button @click="uploadPost">Publish Blog</button>
+        <button @click="uploadPost">Опубликовать</button>
         <router-link class="router-button" to="/preview"
-          >Post Preview</router-link
+          >Посмотреть пост</router-link
         >
       </div>
     </div>

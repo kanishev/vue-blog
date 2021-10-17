@@ -1,15 +1,15 @@
 <template>
   <form class="login" @submit.prevent="singIn">
     <p class="auth-text">
-      Don't have an account?
+      Нет аккаунта?
       <a
         class="router-link"
         href="#"
         @click.prevent="$emit('togglePage', 'Register')"
-        >Register</a
+        >Зарегистрироваться</a
       >
     </p>
-    <h2>Login to Blog</h2>
+    <h2>Войти в Блог</h2>
     <div class="inputs">
       <div class="validation" v-if="formValidMessage">
         <p>{{ this.formValidMessage }}</p>
@@ -24,9 +24,9 @@
       </div>
     </div>
     <a class="reset" href="#" @click.prevent="$emit('togglePage', 'Reset')"
-      >Forgot password?</a
+      >Забыли пароль?</a
     >
-    <button>Sign In</button>
+    <button>Войти</button>
     <div class="angle"></div>
   </form>
 </template>

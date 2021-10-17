@@ -2,7 +2,7 @@
   <div class="reset-password">
     <div class="form-wrap">
       <form class="reset" @submit.prevent="reset">
-        <h2>Reset Password</h2>
+        <h2>Сбросить пароль</h2>
         <div class="inputs">
           <div class="validation" v-if="formValidMessage">
             <p>{{ this.formValidMessage }}</p>
@@ -21,7 +21,7 @@
             >
           </p>
         </div>
-        <button>Reset</button>
+        <button>Сбросить</button>
         <div class="angle"></div>
       </form>
     </div>

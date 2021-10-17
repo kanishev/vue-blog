@@ -30,9 +30,10 @@ export default {
   data() {
     return {
       welcomeScreen: {
-        title: "Welcome !",
-        blogHTML: "Some text",
-        blogCoverPhoto: "coding",
+        title: "Добро пожаловать",
+        blogHTML:
+          "Для возможности создавать и изменять посты, пожалуйста, зарегистрируйтесь",
+        postCoverImage: "mainImage",
         main: true,
       },
     };
@@ -45,6 +46,7 @@ export default {
       return this.$store.getters.blogPostsCards;
     },
     user() {
+      console.log(this.$store.state.user);
       return this.$store.state.user;
     },
   },

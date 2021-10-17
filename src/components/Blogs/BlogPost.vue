@@ -1,30 +1,27 @@
 <template>
   <div class="blog-wrapper" :class="{ 'no-user': !user }">
     <div class="blog-content">
-      <div>
-        <h2>{{ post.postTitle }}</h2>
-        <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
-        <p class="content-preview" v-else v-html="post.postHTML">
-          {{ post.blogPost }}
-        </p>
-        <router-link v-if="post.main" class="link link-light" to="#">
-          Login/Register <Arrow class="arrow arrow-light" />
+      <div v-if="post.main">
+        <h2>{{ post.title }}</h2>
+
+        <p>{{ post.blogHTML }}</p>
+        <router-link class="link blog-link link-light" to="#">
+          Войти / Зарегистрироваться <Arrow class="arrow arrow-light" />
         </router-link>
+      </div>
+      <div v-else>
+        <h2>{{ post.postTitle }}</h2>
+
         <router-link
-          class="link"
-          v-else
+          class="link blog-link"
           :to="{ name: 'Post', params: { id: this.post.postId } }"
         >
-          View The Post<Arrow class="arrow" />
+          Посмотреть пост<Arrow class="arrow" />
         </router-link>
       </div>
     </div>
     <div class="blog-image">
-      <img
-        v-if="post.welcomeScreen"
-        :src="require(`../../assets/blogPhotos/${post.photo}.jpg`)"
-        alt="image"
-      />
+      <img v-if="post.main" src="../../assets/mainImage.jpg" alt="image" />
       <img v-else :src="post.postCoverImage" alt="image" />
     </div>
   </div>
@@ -37,6 +34,7 @@ export default {
   name: "blogPost",
   computed: {
     user() {
+      console.log(this.post);
       return this.$store.state.user;
     },
   },
@@ -101,10 +99,10 @@ export default {
         text-overflow: ellipsis;
       }
 
-      .link {
+      .blog-link {
+        margin-top: 32px;
         display: inline-flex;
         align-items: center;
-        margin-top: 32px;
         padding-bottom: 4px;
         border-bottom: 1px solid transparent;
         transition: 0.5s ease-in all;

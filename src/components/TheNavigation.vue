@@ -7,10 +7,14 @@
         </div>
         <div class="navbar-list">
           <ul v-show="!mobile">
-            <router-link class="link" to="/">Домашяя</router-link>
-            <router-link class="link" to="/blogs">Блог</router-link>
-            <router-link class="link" to="/create">Создать блог</router-link>
-            <router-link v-if="!user" class="link" to="/auth"
+            <router-link class="link navbar-link" to="/">Домашяя</router-link>
+            <router-link class="link navbar-link" to="/blogs"
+              >Посты</router-link
+            >
+            <router-link class="link navbar-link" to="/create"
+              >Создать блог</router-link
+            >
+            <router-link v-if="!user" class="link navbar-link" to="/auth"
               >Войти</router-link
             >
           </ul>
@@ -41,14 +45,14 @@
                 <div class="option">
                   <router-link class="option" to="/profile">
                     <user class="icon" />
-                    <p>Profile</p>
+                    <p>Профиль</p>
                   </router-link>
                 </div>
               </div>
               <div class="options">
                 <div class="option" @click="signOut">
                   <signOut class="icon" />
-                  <p>Sign Out</p>
+                  <p>Выйти</p>
                 </div>
               </div>
             </div>
@@ -141,13 +145,13 @@ header {
   box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.08);
   z-index: 2;
 
-  .link {
+  .navbar-link {
     font-weight: 500;
     padding: 0 8px;
     transition: 0.3s color ease;
 
     &:hover {
-      color: #7b68ee;
+      color: #fdcc21;
     }
   }
 

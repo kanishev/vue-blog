@@ -12,7 +12,7 @@
       <div class="post-info">
         <input type="text" placeholder="enter post title" v-model="postTitle" />
         <div class="upload-file">
-          <label for="blog-image">Upload cover image</label>
+          <label for="blog-image">Загрузить изображение</label>
           <input
             type="file"
             ref="image"
@@ -39,9 +39,9 @@
         />
       </div>
       <div class="blog-actions">
-        <button @click="updatePost">Save Changes</button>
+        <button @click="updatePost">Сохранить изменения</button>
         <router-link class="router-button" to="/preview"
-          >Post Changes</router-link
+          >Посмотреть изменения</router-link
         >
       </div>
     </div>
@@ -85,7 +85,6 @@ export default {
       return p.postId === this.$route.params.id;
     })[0];
 
-    console.log(this.currentPost);
     this.$store.commit("setPostState", this.currentPost);
   },
   computed: {
@@ -108,6 +107,7 @@ export default {
         return this.$store.state.post.postHTML;
       },
       set(p) {
+        console.log("1");
         this.$store.commit("updatePostInfo", { key: "postHTML", p });
       },
     },

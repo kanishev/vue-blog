@@ -10,7 +10,7 @@
     </div>
     <img :src="post.postCoverImage" alt="cardImage" />
     <figcaption class="info">
-      <h4>{{ post.blogTitle }}</h4>
+      <h4>{{ post.postTitle }}</h4>
       <p>
         Posted on:
         {{

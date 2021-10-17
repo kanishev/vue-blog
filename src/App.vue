@@ -38,13 +38,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,400&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .app {
@@ -98,7 +98,7 @@ button,
     outline: none;
   }
   &:hover {
-    background-color: rgba(48, 48, 48, 0.7);
+    background-color: #fdcc21;
   }
 }
 .button-ghost {

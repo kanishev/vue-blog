@@ -1,7 +1,7 @@
 <template>
   <div class="blog-card-wrap">
     <div class="blog-cards container">
-      <div class="toggle-edit">
+      <div class="toggle-edit" v-if="user">
         <span>Toggle Editing Post</span>
         <input type="checkbox" v-model="isEditPost" />
       </div>
@@ -24,8 +24,10 @@ export default {
     };
   },
   computed: {
+    user() {
+      return this.$store.state.user;
+    },
     sampleBlogCards() {
-      console.log(this.$store.state.post.posts);
       return this.$store.state.post.posts;
     },
     isEditPost: {
@@ -81,7 +83,7 @@ export default {
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
     input:checked[type="checkbox"]:before {
-      background: #7b68ee;
+      background: #fdcc21;
       left: 52px;
     }
   }

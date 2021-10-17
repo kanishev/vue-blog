@@ -3,7 +3,7 @@
     <div class="container">
       <div class="left">
         <div class="col-1">
-          <router-link class="header" to="/home">Blog</router-link>
+          <router-link class="header" to="/home">Блог</router-link>
           <ul>
             <li>
               <a href=""><YouTube class="svg-icon"/></a>
@@ -21,19 +21,19 @@
         </div>
         <div class="col-2">
           <ul>
-            <router-link class="link" to="/home">Home</router-link>
-            <router-link class="link" to="/blogs">Blogs</router-link>
+            <router-link class="link" to="/home">Домашняя</router-link>
+            <router-link class="link" to="/blogs">Посты</router-link>
             <router-link v-if="user" class="link" to="/create"
-              >Create Post</router-link
+              >Создать пост</router-link
             >
             <router-link v-if="!user" class="link" to="/auth"
-              >Login/Register</router-link
+              >Войти / Зарегистрироваться</router-link
             >
           </ul>
         </div>
       </div>
       <div class="right">
-        <p>Copyright 2021 Rights Reserved</p>
+        <p>Copyright 2021 Все права защищены</p>
       </div>
     </div>
   </footer>
