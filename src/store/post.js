@@ -4,8 +4,8 @@ import db from "../firebase/firebaseInit";
 export default {
   state: {
     posts: [],
-    postHTML: "Write your post title here",
-    postTitle: "Hello",
+    postHTML: "Здесь можно основной текст поста",
+    postTitle: "Заголовок поста",
     postName: "",
     postImageName: "",
     postImageURL: "",

@@ -102,6 +102,7 @@ router.beforeEach((to, from, next) => {
     next({ name: "Auth" });
   } else {
     document.title = `${to.meta.title} | Blog`;
+    store.commit("toggleProfileMenu", false);
     next();
   }
 });

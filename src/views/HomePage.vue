@@ -8,7 +8,7 @@
     ></blog-post>
     <div class="blog-card-wrap">
       <div class="container">
-        <h3>View more Recent Blog</h3>
+        <h3>Последние посты</h3>
         <div class="blog-cards">
           <blog-card
             v-for="(post, idx) in blogPostsCards"

@@ -12,16 +12,16 @@
     <figcaption class="info">
       <h4>{{ post.postTitle }}</h4>
       <p>
-        Posted on:
+        Пост выложен:
         {{
-          new Date(post.postDate).toLocaleString("en-us", { dateStyle: "long" })
+          new Date(post.postDate).toLocaleString("ru-RU", { dateStyle: "long" })
         }}
       </p>
       <router-link
         class="link"
         :to="{ name: 'Post', params: { id: this.post.postId } }"
       >
-        View The Post <Arrow class="arrow" />
+        Посмотреть пост <Arrow class="arrow" />
       </router-link>
     </figcaption>
   </figure>

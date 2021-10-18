@@ -47,6 +47,10 @@ export default {
   font-family: "Montserrat", sans-serif;
 }
 
+#loader {
+  display: none;
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -122,6 +126,7 @@ button,
   border: 2px solid #fff;
   color: #fff;
 }
+
 .button-inactive {
   pointer-events: none !important;
   cursor: none !important;

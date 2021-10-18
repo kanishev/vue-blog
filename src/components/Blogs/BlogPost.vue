@@ -82,7 +82,7 @@ export default {
         text-transform: uppercase;
         margin-bottom: 24px;
         @media (min-width: 700px) {
-          font-size: 48px;
+          font-size: 32px;
         }
       }
 

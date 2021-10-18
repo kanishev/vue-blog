@@ -6,30 +6,30 @@
       @closeModal="isModalActive = false"
     />
     <div class="container">
-      <h2>Accaunt Settings</h2>
+      <h2>Настройки Аккаунта</h2>
       <div class="profile-info">
         <div class="initials">{{ $store.state.profileInitials }}</div>
         <div class="admin-badge">
           <AdminIcon class="icon" />
-          <span>admin</span>
+          <span>Администратор</span>
         </div>
         <div class="input">
-          <label for="firstName">First Name:</label>
+          <label for="firstName">Имя:</label>
           <input type="text" id="firstName" v-model="firstName" />
         </div>
         <div class="input">
-          <label for="lastName">Last Name:</label>
+          <label for="lastName">Фамилия:</label>
           <input type="text" id="lastName" v-model="lastName" />
         </div>
         <div class="input">
-          <label for="userName">Username:</label>
+          <label for="userName">Никнейм:</label>
           <input type="text" id="userName" v-model="userName" />
         </div>
         <div class="input">
           <label for="email">Email:</label>
           <input type="text" id="email" v-model="email" />
         </div>
-        <button @click="updateInfo">Save changes</button>
+        <button @click="updateInfo">Сохранит изменения</button>
       </div>
     </div>
   </div>

@@ -6,16 +6,24 @@
           <router-link class="header" to="/home">Блог</router-link>
           <ul>
             <li>
-              <a href=""><YouTube class="svg-icon"/></a>
+              <a href="https://t.me/chasti4ka_designer"
+                ><Telegram class="svg-icon"
+              /></a>
             </li>
             <li>
-              <a href=""> <Twitter class="svg-icon" /> </a>
+              <a href="https://wa.me/79221184640">
+                <Whatsapp class="svg-icon" />
+              </a>
             </li>
             <li>
-              <a href=""> <Instagram class="svg-icon" /> </a>
+              <a href="https://www.instagram.com/chastichka_designer">
+                <Instagram class="svg-icon" />
+              </a>
             </li>
             <li>
-              <a href=""> <LinkedIn class="svg-icon" /> </a>
+              <a href="https://www.behance.net/darimabolte6f1">
+                <Behance class="svg-icon" />
+              </a>
             </li>
           </ul>
         </div>
@@ -33,6 +41,9 @@
         </div>
       </div>
       <div class="right">
+        <a class="site link" href="https://chastichkadesign.ru" target="_blank"
+          >chastichkadesign.ru</a
+        >
         <p>Copyright 2021 Все права защищены</p>
       </div>
     </div>
@@ -40,10 +51,10 @@
 </template>
 
 <script>
-import YouTube from "../assets/Icons/youtube-brands.svg";
-import Twitter from "../assets/Icons/twitter-brands.svg";
-import Instagram from "../assets/Icons/instagram-brands.svg";
-import LinkedIn from "../assets/Icons/linkedin-brands.svg";
+import Telegram from "../assets/Icons/telegram.svg";
+import Whatsapp from "../assets/Icons/whatsapp.svg";
+import Instagram from "../assets/Icons/instagram.svg";
+import Behance from "../assets/Icons/behance.svg";
 
 export default {
   name: "theFooter",
@@ -52,7 +63,7 @@ export default {
       return this.$store.state.user;
     },
   },
-  components: { YouTube, Twitter, Instagram, LinkedIn },
+  components: { Telegram, Whatsapp, Instagram, Behance },
 };
 </script>
 
@@ -128,7 +139,7 @@ footer {
             align-items: center;
 
             .svg-icon {
-              width: 24px;
+              width: 32px;
               height: auto;
               color: #fff;
             }
@@ -151,6 +162,10 @@ footer {
             font-weight: 500;
             color: #fff;
             text-decoration: none;
+
+            &:hover {
+              color: #fdcc21;
+            }
           }
         }
       }
@@ -164,6 +179,15 @@ footer {
       @media (min-width: 800px) {
         align-items: flex-end;
         gap: 0;
+      }
+    }
+
+    .site {
+      font-size: 21px;
+      color: #fff;
+
+      &:hover {
+        color: #fdcc21;
       }
     }
 

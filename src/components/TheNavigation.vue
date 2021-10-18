@@ -92,7 +92,6 @@ export default {
   },
   data() {
     return {
-      isProfileMenuActive: false,
       mobile: false,
       mobileNavbar: false,
       windowWidth: false,
@@ -101,6 +100,9 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    isProfileMenuActive() {
+      return this.$store.getters.isProfileMenuActive;
     },
   },
   methods: {
@@ -123,7 +125,7 @@ export default {
     },
     toggleProfileMenu(e) {
       if (e.target === this.$refs.profile) {
-        this.isProfileMenuActive = !this.isProfileMenuActive;
+        this.$store.commit("toggleProfileMenu", !this.isProfileMenuActive);
       }
     },
     toggleMobileNavbar() {

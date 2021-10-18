@@ -1,8 +1,8 @@
 <template>
   <div v-if="currentPost" class="post-view">
     <div class="container quil-wrapper">
-      <h2>{{ this.currentPost.postTitle }}</h2>
-      <h4>
+      <h2 class="post-title">{{ this.currentPost.postTitle }}</h2>
+      <h4 class="post-date">
         Posted on:
         {{
           new Date(this.currentPost.postDate).toLocaleString("en-us", {
@@ -10,7 +10,11 @@
           })
         }}
       </h4>
-      <img :src="this.currentPost.postCoverImage" alt="coverImg" />
+      <img
+        class="post-image"
+        :src="this.currentPost.postCoverImage"
+        alt="coverImg"
+      />
       <div
         class="post-content ql-editor"
         v-html="this.currentPost.postHTML"
@@ -37,10 +41,25 @@ export default {
 
 <style lang="scss">
 .post-view {
-  h4 {
-    font-weight: 400;
-    font-size: 14px;
-    margin-bottom: 24px;
+  padding: 60px 0;
+
+  .container {
+    max-width: 700px;
+
+    .post-title {
+      margin-bottom: 10px;
+    }
+
+    .post-date {
+      font-weight: 400;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .post-image {
+      max-width: inherit;
+      margin-bottom: 20px;
+    }
   }
 }
 </style>
