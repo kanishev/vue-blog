@@ -67,10 +67,25 @@
     ></menu-button>
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNavbar">
-        <router-link class="link" to="/">Домашяя</router-link>
-        <router-link class="link" to="/blogs">Блог</router-link>
-        <router-link class="link" to="/create">Создать блог</router-link>
-        <router-link v-if="!user" class="link" to="/auth">Войти</router-link>
+        <router-link @click.native="closeMobile" class="link" to="/"
+          >Домашяя</router-link
+        >
+        <router-link @click.native="closeMobile" class="link" to="/profile"
+          >Профиль</router-link
+        >
+        <router-link @click.native="closeMobile" class="link" to="/blogs"
+          >Блог</router-link
+        >
+        <router-link @click.native="closeMobile" class="link" to="/create"
+          >Создать блог</router-link
+        >
+        <router-link
+          @click.native="closeMobile"
+          v-if="!user"
+          class="link"
+          to="/auth"
+          >Войти</router-link
+        >
       </ul>
     </transition>
   </header>
@@ -106,6 +121,9 @@ export default {
     },
   },
   methods: {
+    closeMobile() {
+      this.mobileNavbar = false;
+    },
     checkScreen() {
       this.windowWidth = window.innerWidth;
 
@@ -196,6 +214,10 @@ header {
         border-radius: 50%;
         color: #fff;
         background-color: #303030;
+
+        @media (max-width: 750px) {
+          display: none;
+        }
 
         span {
           pointer-events: none;

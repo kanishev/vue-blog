@@ -92,6 +92,7 @@ footer {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 32px;
       @media (min-width: 800px) {
         flex-direction: row;
         align-items: initial;
@@ -176,6 +177,7 @@ footer {
       color: #fff;
       align-items: center;
       flex-direction: column;
+      text-align: center;
       @media (min-width: 800px) {
         align-items: flex-end;
         gap: 0;
