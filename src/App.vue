@@ -20,6 +20,8 @@ export default {
   created() {
     firebase.auth().onAuthStateChanged((user) => {
       this.$store.commit("updateUser", user);
+
+      console.log(user);
       if (user) {
         this.$store.dispatch("getUser");
       }
@@ -37,7 +39,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,400&display=swap");
 
 * {
@@ -76,15 +78,6 @@ export default {
 .arrow {
   margin-left: 8px;
   width: 12px;
-  path {
-    fill: #000;
-  }
-}
-
-.arrow-light {
-  path {
-    fill: #fff;
-  }
 }
 
 button,
@@ -98,13 +91,16 @@ button,
   border-radius: 20px;
   border: none;
   text-transform: uppercase;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    background-color: #fdcc21;
-  }
 }
+
+.router-button:focus {
+  outline: none;
+}
+
+.router-button:hover {
+  background-color: #fdcc21;
+}
+
 .button-ghost {
   color: #000;
   padding: 0;
@@ -113,13 +109,17 @@ button,
   font-size: 15px;
   font-weight: 500;
   background-color: transparent;
-  @media (min-width: 700px) {
+}
+
+@media (min-width: 700px) {
+  .button-ghost {
     margin-top: 0;
     margin-left: auto;
   }
-  i {
-    margin-left: 8px;
-  }
+}
+
+.button-ghost i {
+  margin-left: 8px;
 }
 .button-light {
   background-color: transparent;
@@ -144,24 +144,11 @@ button:disabled {
   @media (min-width: 500px) {
     padding: 100px 16px;
   }
+}
 
-  .blog-cards {
-    display: grid;
-    gap: 32px;
-    grid-template-columns: 1fr;
-
-    @media (min-width: 500px) {
-      grid-template-columns: repeat((2, 1fr));
-    }
-
-    @media (min-width: 900px) {
-      grid-template-columns: repeat((3, 1fr));
-    }
-
-    @media (min-width: 1200px) {
-      grid-template-columns: repeat((4, 1fr));
-    }
-  }
+.blog-card-wrap .blog-cards {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .validation {

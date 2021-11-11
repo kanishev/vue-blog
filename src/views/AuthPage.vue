@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .form-wrap {
   overflow: hidden;
   display: flex;
@@ -70,10 +70,10 @@ export default {
 
 .auth-text {
   margin-bottom: 32px;
+}
 
-  .router-link {
-    color: #000;
-  }
+.auth-text .router-link {
+  color: #000;
 }
 
 form {
@@ -87,71 +87,71 @@ form {
   @media (min-width: 900px) {
     padding: 0 50px;
   }
+}
 
-  h2 {
-    text-align: center;
-    font-size: 32px;
-    color: #303030;
-    margin-bottom: 40px;
-    @media (min-width: 900px) {
-      font-size: 40px;
-    }
+.reset {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 16px 0 32px;
+  border-bottom: 1px solid transparent;
+  transition: 0.5s ease all;
+}
+
+.reset:hover {
+  border-color: #303030;
+}
+
+.icon {
+  width: 12px;
+  position: absolute;
+  left: 6px;
+}
+
+.angle {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  transform: rotateZ(3deg);
+  width: 60px;
+  right: -30px;
+  height: 100%;
+
+  @media (min-width: 900px) {
+    display: initial;
   }
+}
 
-  .inputs {
-    width: 100%;
-    max-width: 350px;
-
-    .input {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 8px;
-
-      input {
-        width: 100%;
-        border: none;
-        background-color: #f2f7f6;
-        padding: 4px 4px 4px 30px;
-        height: 50px;
-      }
-    }
-
-    .icon {
-      width: 12px;
-      position: absolute;
-      left: 6px;
-    }
+form h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #303030;
+  margin-bottom: 40px;
+  @media (min-width: 900px) {
+    font-size: 40px;
   }
+}
 
-  .reset {
-    text-decoration: none;
-    color: #000;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 16px 0 32px;
-    border-bottom: 1px solid transparent;
-    transition: 0.5s ease all;
+form .inputs {
+  width: 100%;
+  max-width: 350px;
+}
 
-    &:hover {
-      border-color: #303030;
-    }
-  }
+form .inputs .input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
 
-  .angle {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    transform: rotateZ(3deg);
-    width: 60px;
-    right: -30px;
-    height: 100%;
-
-    @media (min-width: 900px) {
-      display: initial;
-    }
-  }
+form .inputs .input input {
+  width: 100%;
+  border: none;
+  background-color: #f2f7f6;
+  padding: 4px 4px 4px 30px;
+  height: 50px;
 }
 
 .background {

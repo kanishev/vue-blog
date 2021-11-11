@@ -73,17 +73,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.reset-password {
-  .reset {
-    h2 {
-      margin-bottom: 8px;
-    }
-
-    p {
-      text-align: center;
-      margin-bottom: 12px;
-    }
-  }
+<stylescoped>
+.reset-password .reset h2 {
+	margin-bottom: 8px;
 }
-</style>
+ .reset-password .reset p {
+	text-align: center;
+	margin-bottom: 12px;
+}
+
+</stylescoped>

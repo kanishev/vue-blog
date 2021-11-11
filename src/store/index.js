@@ -57,6 +57,8 @@ export default new Vuex.Store({
       const dataBase = await db
         .collection("users")
         .doc(firebase.auth().currentUser.uid);
+
+      console.log(dataBase);
       const dbResults = await dataBase.get();
       ctx.commit("setProfile", dbResults);
       ctx.commit("setProfileInitials");

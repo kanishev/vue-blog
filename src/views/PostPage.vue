@@ -39,27 +39,23 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .post-view {
   padding: 60px 0;
-
-  .container {
-    max-width: 700px;
-
-    .post-title {
-      margin-bottom: 10px;
-    }
-
-    .post-date {
-      font-weight: 400;
-      font-size: 14px;
-      margin-bottom: 24px;
-    }
-
-    .post-image {
-      max-width: inherit;
-      margin-bottom: 20px;
-    }
-  }
+}
+.post-view .container {
+  max-width: 700px;
+}
+.post-view .container .post-title {
+  margin-bottom: 10px;
+}
+.post-view .container .post-date {
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.post-view .container .post-image {
+  max-width: inherit;
+  margin-bottom: 20px;
 }
 </style>
