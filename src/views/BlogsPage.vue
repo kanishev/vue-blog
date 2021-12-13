@@ -2,7 +2,7 @@
   <div class="blog-card-wrap">
     <div class="blog-cards container">
       <div class="toggle-edit" v-if="user">
-        <span>Toggle Editing Post</span>
+        <span>Режим редактирования</span>
         <input type="checkbox" v-model="isEditPost" />
       </div>
       <blog-card
@@ -49,6 +49,7 @@ export default {
 <style csoped>
 .blog-cards {
   position: relative;
+  gap: 20px;
 }
 .blog-cards .toggle-edit {
   display: flex;

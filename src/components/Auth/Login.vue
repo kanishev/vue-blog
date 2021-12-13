@@ -27,7 +27,11 @@
       >Забыли пароль?</a
     >
     <button>Войти</button>
-    <div class="angle"></div>
+    <div class="code">
+      <h4>Test accaunt</h4>
+      <p>login: test@mail.ru</p>
+      <p>password: 111222</p>
+    </div>
   </form>
 </template>
 
@@ -57,6 +61,8 @@ export default {
     async singIn() {
       if (this.isFormValid) {
         try {
+          this.$emit("toggleLoader", true);
+
           this.formValidMessage = "";
 
           const firebaseAuth = await firebase.auth();
@@ -68,6 +74,8 @@ export default {
           this.$router.push("/");
         } catch (err) {
           this.formValidMessage = err.message;
+        } finally {
+          this.$emit("toggleLoader", false);
         }
       } else {
         this.formValidMessage = "Пожалуйста, заполните все поля";
@@ -78,4 +86,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.code {
+  margin-top: 20px;
+  background-color: #f2f7f6;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.code p,
+h4 {
+  margin-bottom: 5px;
+  text-align: center;
+}
+</style>

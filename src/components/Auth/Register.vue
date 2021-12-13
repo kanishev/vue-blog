@@ -75,6 +75,7 @@ export default {
     async register() {
       if (this.isFormValid) {
         try {
+          this.$emit("toggleLoader", true);
           this.formValidMessage = "";
           const firebaseAuth = await firebase.auth();
           const createUser = await firebaseAuth.createUserWithEmailAndPassword(
@@ -95,6 +96,8 @@ export default {
           return;
         } catch (e) {
           return (this.formValidMessage = e.message);
+        } finally {
+          this.$emit("toggleLoader", false);
         }
       }
 

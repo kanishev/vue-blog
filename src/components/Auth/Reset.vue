@@ -57,11 +57,12 @@ export default {
           .auth()
           .sendPasswordResetEmail(this.email)
           .then(() => {
-            this.$emit("toggleLoader", false);
             this.$emit("toggleModal", "Проверьте свою почту");
           })
           .catch((e) => {
             this.formValidMessage = e.message;
+          })
+          .finally(() => {
             this.$emit("toggleLoader", false);
           });
       } else {

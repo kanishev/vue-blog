@@ -1,0 +1,80 @@
+[debug] [2021-11-11T20:25:15.790Z] ----------------------------------------------------------------------
+[debug] [2021-11-11T20:25:15.797Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Kanishev\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-11-11T20:25:15.798Z] CLI Version:   9.22.0
+[debug] [2021-11-11T20:25:15.798Z] Platform:      win32
+[debug] [2021-11-11T20:25:15.799Z] Node Version:  v16.13.0
+[debug] [2021-11-11T20:25:15.802Z] Time:          Thu Nov 11 2021 23:25:15 GMT+0300 (Moscow Standard Time)
+[debug] [2021-11-11T20:25:15.803Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-11-11T20:25:15.810Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-11-11T20:25:15.928Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-11T20:25:15.928Z] > authorizing via signed-in user (kanishevnikitaa@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Работа\vue\vue-blog
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[debug] [2021-11-11T20:25:17.141Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2021-11-11T20:25:17.142Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using vue-blog-79178. 
+[debug] [2021-11-11T20:26:38.584Z] > refreshing access token with scopes: []
+[debug] [2021-11-11T20:26:38.585Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-11T20:26:38.997Z] <<< HTTP RESPONSE 200 {"date":"Thu, 11 Nov 2021 20:26:39 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-11T20:26:39.025Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vue-blog-79178 [none]
+[debug] [2021-11-11T20:26:39.624Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vue-blog-79178 200
+[debug] [2021-11-11T20:26:39.624Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vue-blog-79178 {"projectId":"vue-blog-79178","projectNumber":"138956887530","displayName":"vue-blog","name":"projects/vue-blog-79178","resources":{"hostingSite":"vue-blog-79178","realtimeDatabaseInstance":"vue-blog-79178-default-rtdb","storageBucket":"vue-blog-79178.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+=== Firestore Setup
+[debug] [2021-11-11T20:26:39.629Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-11-11T20:26:39.630Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-11T20:26:39.904Z] <<< HTTP RESPONSE 200 {"date":"Thu, 11 Nov 2021 20:26:39 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-11T20:26:39.931Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/vue-blog-79178/services/firestore.googleapis.com  
+ 
+[debug] [2021-11-11T20:26:42.229Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 11 Nov 2021 20:26:41 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-11T20:26:42.232Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/vue-blog-79178  
+ 
+[debug] [2021-11-11T20:26:43.137Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 11 Nov 2021 20:26:43 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-11T20:26:43.138Z] database_type: CLOUD_FIRESTORE
+[debug] [2021-11-11T20:26:43.139Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-11T20:26:43.140Z] > authorizing via signed-in user (kanishevnikitaa@gmail.com)
+[debug] [2021-11-11T20:26:43.140Z] [iam] checking project vue-blog-79178 for permissions ["firebase.projects.get"]
+[debug] [2021-11-11T20:26:43.141Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/vue-blog-79178:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-11-11T20:26:44.584Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 11 Nov 2021 20:26:44 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=894","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

@@ -28,34 +28,45 @@ export default {
   },
   actions: {
     async getPost({ state }) {
-      const dataBase = db.collection("blogPosts").orderBy("date", "desc");
-      const dbResults = await dataBase.get();
+      try {
+        const dataBase = db.collection("blogPosts").orderBy("date", "desc");
+        const dbResults = await dataBase.get();
 
-      dbResults.forEach((doc) => {
-        if (!state.posts.some((p) => p.postId === doc.id)) {
-          const data = {
-            postId: doc.data().postID,
-            postHTML: doc.data().postHTML,
-            postCoverImage: doc.data().postCoverImage,
-            postTitle: doc.data().postTitle,
-            postDate: doc.data().date,
-            postImageName: doc.data().postImageName,
-          };
-          state.posts.push(data);
-        }
-      });
-      state.isPostLoaded = true;
+        dbResults.forEach((doc) => {
+          if (!state.posts.some((p) => p.postId === doc.id)) {
+            const data = {
+              postId: doc.data().postID,
+              postHTML: doc.data().postHTML,
+              postCoverImage: doc.data().postCoverImage,
+              postTitle: doc.data().postTitle,
+              postDate: doc.data().date,
+              postImageName: doc.data().postImageName,
+            };
+            state.posts.push(data);
+          }
+        });
+      } catch (e) {
+        console.log(e);
+      } finally {
+        state.isPostLoaded = true;
+      }
     },
     async deletePost({ commit }, payload) {
-      const getPost = await db.collection("blogPosts").doc(payload);
-      await getPost.delete();
-
-      commit("filterPosts", payload);
+      try {
+        const getPost = await db.collection("blogPosts").doc(payload);
+        await getPost.delete();
+        commit("filterPosts", payload);
+      } catch (e) {
+        console.log(e);
+      }
     },
     async updatePost({ commit, dispatch }, payload) {
-      commit("filterPosts", payload);
-
-      await dispatch("getPost");
+      try {
+        commit("filterPosts", payload);
+        await dispatch("getPost");
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
   getters: {

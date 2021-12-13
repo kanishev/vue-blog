@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+.blog-cards {
+  gap: 20px;
+}
 h3 {
   font-weight: 300;
   font-size: 28px;

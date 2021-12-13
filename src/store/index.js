@@ -36,14 +36,8 @@ export default new Vuex.Store({
     },
     setProfileInitials(state) {
       state.profileInitials =
-        state.profileFirstName
-          .match(/(\b\S)?/g)
-          .join("")
-          .toUpperCase() +
-        state.profileLastName
-          .match(/(\b\S)?/g)
-          .join("")
-          .toUpperCase();
+        state.profileFirstName.charAt(0).toUpperCase() +
+        state.profileLastName.charAt(0).toUpperCase();
     },
     changeProfileInfo(state, [key, data]) {
       state[key] = data;
@@ -54,23 +48,30 @@ export default new Vuex.Store({
   },
   actions: {
     async getUser(ctx) {
-      const dataBase = await db
-        .collection("users")
-        .doc(firebase.auth().currentUser.uid);
+      try {
+        const dataBase = await db
+          .collection("users")
+          .doc(firebase.auth().currentUser.uid);
 
-      console.log(dataBase);
-      const dbResults = await dataBase.get();
-      ctx.commit("setProfile", dbResults);
-      ctx.commit("setProfileInitials");
+        const dbResults = await dataBase.get();
+        ctx.commit("setProfile", dbResults);
+        ctx.commit("setProfileInitials");
+      } catch (e) {
+        console.log(e);
+      }
     },
     async updateUserProfile(ctx) {
-      const dataBase = await db.collection("users").doc(ctx.state.profileId);
-      await dataBase.update({
-        firstName: ctx.state.profileFirstName,
-        lastName: ctx.state.profileLastName,
-        userName: ctx.state.profileUserName,
-      });
-      ctx.commit("setProfileInitials");
+      try {
+        const dataBase = await db.collection("users").doc(ctx.state.profileId);
+        await dataBase.update({
+          firstName: ctx.state.profileFirstName,
+          lastName: ctx.state.profileLastName,
+          userName: ctx.state.profileUserName,
+        });
+        ctx.commit("setProfileInitials");
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
   getters: {
