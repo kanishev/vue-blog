@@ -42,16 +42,16 @@
                 </div>
               </div>
               <div class="options">
-                <div class="option">
-                  <router-link class="option" to="/profile">
-                    <user class="icon" />
+                <router-link class="option" to="/profile">
+                  <div class="option">
+                    <userIcon class="icon" />
                     <p>Профиль</p>
-                  </router-link>
-                </div>
+                  </div>
+                </router-link>
               </div>
               <div class="options">
                 <div class="option" @click="signOut">
-                  <signOut class="icon" />
+                  <signOutIcon class="icon" />
                   <p>Выйти</p>
                 </div>
               </div>
@@ -60,11 +60,11 @@
         </div>
       </nav>
     </div>
-    <menu-button
+    <menuButtonIcon
       class="menu-btn"
       @click="toggleMobileNavbar"
       v-show="mobile"
-    ></menu-button>
+    />
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNavbar">
         <router-link @click.native="closeMobile" class="link" to="/"
@@ -92,9 +92,9 @@
 </template>
 
 <script>
-import menuButton from "../assets/Icons/bars-regular.svg";
-import User from "../assets/Icons/user-alt-light.svg";
-import SignOut from "../assets/Icons/sign-out-alt-regular.svg";
+import menuButtonIcon from "../assets/Icons/bars-regular.svg";
+import UserIcon from "../assets/Icons/user-alt-light.svg";
+import SignOutIcon from "../assets/Icons/sign-out-alt-regular.svg";
 
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -151,9 +151,9 @@ export default {
     },
   },
   components: {
-    menuButton,
-    User,
-    SignOut,
+    menuButtonIcon,
+    UserIcon,
+    SignOutIcon,
   },
 };
 </script>
@@ -258,9 +258,10 @@ header nav .navbar-list .profile .profile-menu .options {
   margin: 15px;
 }
 header nav .navbar-list .profile .profile-menu .options .option {
+  display: flex;
   text-decoration: none;
   color: #fff;
-  display: flex;
+  justify-content: center;
   align-items: center;
   margin-bottom: 12px;
 }

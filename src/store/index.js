@@ -10,6 +10,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isEditPost: null,
+    isLoading: false,
     user: null,
     editPost: null,
     isProfileMenuActive: false,
@@ -34,6 +35,9 @@ export default new Vuex.Store({
       state.profileLastName = p.data().lastName;
       state.profileUserName = p.data().userName;
     },
+    setLoading(state, payload) {
+      state.isLoading = payload;
+    },
     setProfileInitials(state) {
       state.profileInitials =
         state.profileFirstName.charAt(0).toUpperCase() +
@@ -47,17 +51,20 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async getUser(ctx) {
+    async getUser({ commit }) {
       try {
+        commit("setLoading", true);
         const dataBase = await db
           .collection("users")
           .doc(firebase.auth().currentUser.uid);
 
         const dbResults = await dataBase.get();
-        ctx.commit("setProfile", dbResults);
-        ctx.commit("setProfileInitials");
+        commit("setProfile", dbResults);
+        commit("setProfileInitials");
       } catch (e) {
         console.log(e);
+      } finally {
+        commit("setLoading", false);
       }
     },
     async updateUserProfile(ctx) {

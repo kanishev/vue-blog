@@ -1,5 +1,6 @@
 <template>
   <div class="app-wrapper">
+    <Loader v-if="isLoading" />
     <component :is="layout" v-if="this.$store.state.post.isPostLoaded">
     </component>
   </div>
@@ -8,6 +9,7 @@
 <script>
 import EmptyLayout from "./layouts/EmptyLayout.vue";
 import MainLayout from "./layouts/MainLayout.vue";
+import Loader from "./components/AppLoader.vue";
 
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -18,22 +20,29 @@ export default {
     return {};
   },
   created() {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.$store.commit("updateUser", user);
-      if (user) {
-        this.$store.dispatch("getUser");
-      }
-    });
-    this.$store.dispatch("getPost");
+    try {
+      firebase.auth().onAuthStateChanged((user) => {
+        this.$store.commit("updateUser", user);
+        if (user) {
+          this.$store.dispatch("getUser");
+        }
+      });
+      this.$store.dispatch("getPost");
+    } catch (e) {
+      console.log(e);
+    }
   },
   computed: {
     layout() {
       return (this.$route.meta.layout || "empty") + "-layout";
     },
+    isLoading() {
+      return this.$store.state.isLoading;
+    },
   },
   mounted() {},
   methods: {},
-  components: { EmptyLayout, MainLayout },
+  components: { EmptyLayout, MainLayout, Loader },
 };
 </script>
 
