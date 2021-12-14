@@ -75,8 +75,5 @@ export default {
     blogPostsFeed(state) {
       return state.posts.slice(0, 2);
     },
-    blogPostsCards(state) {
-      return state.posts;
-    },
   },
 };

@@ -22,7 +22,7 @@ export default {
   height: 100%;
   width: 100%;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
   justify-content: center;
   align-items: center;
   z-index: 30;
@@ -40,7 +40,7 @@ export default {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.4);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .lds-ellipsis div:nth-child(1) {
