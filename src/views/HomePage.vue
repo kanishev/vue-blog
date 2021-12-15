@@ -39,7 +39,7 @@ export default {
       return this.$store.getters.blogPostsFeed;
     },
     blogPostsCards() {
-      return this.$store.state.blogPostsCards;
+      return this.$store.state.post.posts;
     },
     user() {
       return this.$store.state.user;

@@ -7,7 +7,7 @@
         </div>
         <div class="navbar-list">
           <ul v-show="!mobile">
-            <router-link class="link navbar-link" to="/">Домашяя</router-link>
+            <router-link class="link navbar-link" to="/">Домашняя</router-link>
             <router-link class="link navbar-link" to="/blogs"
               >Посты</router-link
             >
