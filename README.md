@@ -6,7 +6,7 @@
 
 ## Project Information
 
-This is app that provide you
+Simple blog app for [Chastichka](https://chastichkadesign.ru) designer
 
 This app provide you:
 
