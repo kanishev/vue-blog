@@ -8,7 +8,6 @@ firebase.json
 firestore.indexes.json
 firestore.rules
 storage.rules
-preview
 
 # local env files
 .env.local
