@@ -1,6 +1,6 @@
-# ✔️ Chastichka Design Blog 📑
+# 📝 Chastichka Design Blog ✏️
 
-![Главная страница](preview/cover.gif "cover-1")
+![Главная страница](preview/cover-1.gif "cover-1")
 ![Страница редактора](preview/cover-2.gif "cover-2")
 ![Страница профиля ](preview/preview-1.jpg "cover-3")
 
@@ -25,16 +25,16 @@ https://vue-blog-79178.web.app
 
 ### Technologies Used
 
-| Technology | Description                                                                                                       | Link 🌐                                    |
-| ---------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| VueJS      | The Progressive JavaScript Framework                                                                              | https://vuejs.org/index.html               |
-|            | VueCLI: Standard Tooling for Vue.js Development                                                                   | https://cli.vuejs.org                      |
-|            | Vuex: Vuex is a state management pattern + library for Vue.js applications.                                       | https://vuex.vuejs.org                     |
-| JavaScript | High Level, Dynamic, Interpreted Language                                                                         | ----                                       |
-| CSS        | Style sheet language used for describing the presentation of a document written in a markup language such as HTML | https://www.w3.org/Style/CSS/specs.en.html |
-| Firebase   | Firebase is Google’s mobile application development platform that helps you build, improve, and grow your app.    | https://firebase.google.com                |
-| QuillJS    | Powerful rich text editor                                                                                         | https://quilljs.com                        |
-| Babel      | Javascript Compiler/Transpiler                                                                                    | https://babeljs.io                         |
+| Technology | Description                                                                                                       | Link 🌐                      |
+| ---------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| VueJS      | The Progressive JavaScript Framework                                                                              | https://vuejs.org/index.html |
+|            | VueCLI: Standard Tooling for Vue.js Development                                                                   | https://cli.vuejs.org        |
+|            | Vuex: Vuex is a state management pattern + library for Vue.js applications.                                       | https://vuex.vuejs.org       |
+| JavaScript | High Level, Dynamic, Interpreted Language                                                                         | ----                         |
+| CSS        | Style sheet language used for describing the presentation of a document written in a markup language such as HTML | ----                         |
+| Firebase   | Firebase is Google’s mobile application development platform that helps you build, improve, and grow your app.    | https://firebase.google.com  |
+| QuillJS    | Powerful rich text editor                                                                                         | https://quilljs.com          |
+| Babel      | Javascript Compiler/Transpiler                                                                                    | https://babeljs.io           |
 
 ## Project setup
 
