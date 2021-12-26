@@ -3,12 +3,13 @@
     <div class="blog-cards container">
       <div class="toggle-edit" v-if="user">
         <span>Режим редактирования</span>
-        <input type="checkbox" v-model="isEditPost" />
+        <input type="checkbox" v-model="isEdit" />
       </div>
       <blog-card
         v-for="(post, idx) in sampleBlogCards"
         :key="idx"
         :post="post"
+        :isEdit="isEdit"
       ></blog-card>
     </div>
   </div>
@@ -30,17 +31,9 @@ export default {
     sampleBlogCards() {
       return this.$store.state.post.posts;
     },
-    isEditPost: {
-      get() {
-        return this.$store.state.isEditPost;
-      },
-      set(p) {
-        this.$store.commit("toggleEdit", p);
-      },
-    },
   },
   beforeDestroy() {
-    this.$store.commit("toggleEdit", false);
+    this.isEdit = false;
   },
   components: { BlogCard },
 };

@@ -9,10 +9,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    isEditPost: null,
-    isLoading: false,
     user: null,
-    editPost: null,
     isProfileMenuActive: false,
     profileEmail: null,
     profileFirstName: null,
@@ -24,9 +21,6 @@ export default new Vuex.Store({
   mutations: {
     updateUser(state, p) {
       state.user = p;
-    },
-    toggleEdit(state, p) {
-      state.isEditPost = p;
     },
     setProfile(state, p) {
       state.profileId = p.id;
@@ -53,7 +47,6 @@ export default new Vuex.Store({
   actions: {
     async getUser({ commit }) {
       try {
-        commit("setLoading", true);
         const dataBase = await db
           .collection("users")
           .doc(firebase.auth().currentUser.uid);
@@ -63,8 +56,6 @@ export default new Vuex.Store({
         commit("setProfileInitials");
       } catch (e) {
         console.log(e);
-      } finally {
-        commit("setLoading", false);
       }
     },
     async updateUserProfile(ctx) {
@@ -81,10 +72,6 @@ export default new Vuex.Store({
       }
     },
   },
-  getters: {
-    isProfileMenuActive(state) {
-      return state.isProfileMenuActive;
-    },
-  },
+
   modules: { post },
 });

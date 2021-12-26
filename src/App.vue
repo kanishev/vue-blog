@@ -1,8 +1,7 @@
 <template>
   <div class="app-wrapper">
     <Loader v-if="isLoading" />
-    <component :is="layout" v-if="this.$store.state.post.isPostLoaded">
-    </component>
+    <component :is="layout" v-if="this.isPostLoaded"></component>
   </div>
 </template>
 
@@ -17,17 +16,25 @@ import "firebase/auth";
 export default {
   name: "app",
   data() {
-    return {};
+    return {
+      isLoading: true,
+      isPostLoaded: false,
+    };
   },
   created() {
     try {
       firebase.auth().onAuthStateChanged((user) => {
         this.$store.commit("updateUser", user);
         if (user) {
-          this.$store.dispatch("getUser");
+          this.$store.dispatch("getUser").then(() => {
+            this.isLoading = false;
+          });
         }
       });
-      this.$store.dispatch("getPost");
+
+      this.$store.dispatch("getPost").then(() => {
+        this.isPostLoaded = true;
+      });
     } catch (e) {
       console.log(e);
     }
@@ -35,9 +42,6 @@ export default {
   computed: {
     layout() {
       return (this.$route.meta.layout || "empty") + "-layout";
-    },
-    isLoading() {
-      return this.$store.state.isLoading;
     },
   },
   mounted() {},

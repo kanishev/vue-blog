@@ -1,6 +1,6 @@
 <template>
   <figure class="blog-card">
-    <div class="icons" v-show="isEditPost && $route.name == 'Blogs'">
+    <div class="icons" v-show="this.isEdit && $route.name == 'Blogs'">
       <div class="icon" @click="editPost">
         <Edit class="edit" />
       </div>
@@ -33,13 +33,8 @@ import Edit from "../../assets/Icons/edit-regular.svg";
 import Delete from "../../assets/Icons/trash-regular.svg";
 
 export default {
-  props: ["post"],
+  props: ["post", "isEdit"],
   name: "blogCard",
-  computed: {
-    isEditPost() {
-      return this.$store.state.isEditPost;
-    },
-  },
   methods: {
     deletePost() {
       this.$store.dispatch("deletePost", this.post.postId);

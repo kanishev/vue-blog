@@ -8,6 +8,7 @@
         <div class="navbar-list">
           <ul v-show="!mobile">
             <router-link class="link navbar-link" to="/">Домашняя</router-link>
+
             <router-link class="link navbar-link" to="/blogs"
               >Посты</router-link
             >
@@ -110,14 +111,12 @@ export default {
       mobile: false,
       mobileNavbar: false,
       windowWidth: false,
+      isProfileMenuActive: false,
     };
   },
   computed: {
     user() {
       return this.$store.state.user;
-    },
-    isProfileMenuActive() {
-      return this.$store.getters.isProfileMenuActive;
     },
   },
   methods: {
@@ -143,11 +142,16 @@ export default {
     },
     toggleProfileMenu(e) {
       if (e.target === this.$refs.profile) {
-        this.$store.commit("toggleProfileMenu", !this.isProfileMenuActive);
+        this.isProfileMenuActive = !this.isProfileMenuActive;
       }
     },
     toggleMobileNavbar() {
       this.mobileNavbar = !this.mobileNavbar;
+    },
+  },
+  watch: {
+    $route() {
+      this.isProfileMenuActive = false;
     },
   },
   components: {

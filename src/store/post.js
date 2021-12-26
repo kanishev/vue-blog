@@ -9,8 +9,6 @@ export default {
     postName: "",
     postImageName: "",
     postImageURL: "",
-    postImagePreview: false,
-    isPostLoaded: false,
   },
   mutations: {
     updatePostInfo(state, { key, p }) {
@@ -27,9 +25,8 @@ export default {
     },
   },
   actions: {
-    async getPost({ state, commit }) {
+    async getPost({ state }) {
       try {
-        commit("setLoading", true);
         const dataBase = db.collection("blogPosts").orderBy("date", "desc");
         const dbResults = await dataBase.get();
 
@@ -48,9 +45,6 @@ export default {
         });
       } catch (e) {
         console.log(e);
-      } finally {
-        state.isPostLoaded = true;
-        commit("setLoading", false);
       }
     },
     async deletePost({ commit }, payload) {
